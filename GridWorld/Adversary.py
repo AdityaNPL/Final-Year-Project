@@ -1,33 +1,20 @@
 import math
+import Robot
 
 
-class AdversaryRobotClass:
+class AdversaryRobotClass(Robot.RobotClass):
 
     def __init__(self, pos_x, pos_y, grid_ui_obj):
-        self.init_x = pos_x
-        self.init_y = pos_y
-        self.move_x = 0
-        self.move_y = 0
-        self.vel = 10
-        self.size = 20
-        self.direction = 0
-        self.grid_ui_obj = grid_ui_obj
-        self.rectangle = self.grid_ui_obj.canvas.create_rectangle(self.init_x, self.init_y,
-                                                                  self.init_x+self.size, self.init_y+self.size,
+        Robot.RobotClass.__init__(self, pos_x, pos_y, grid_ui_obj)
+        self.rectangle = self.grid_ui_obj.canvas.create_rectangle(self.pos_x, self.pos_y,
+                                                                  self.pos_x+self.size, self.pos_y+self.size,
                                                                   fill="red")
 
-    '''
-    Direction = [0,359] => anti-clockwise angle from horizontal 
-    '''
-    def change_direction_to(self, speed, direction):
-        self.move_x = math.ceil(speed*math.cos(math.radians(direction)))
-        self.move_y = math.ceil(speed*math.sin(math.radians(direction)))
-
     def move(self):
-        self.change_direction_to(self.vel, self.direction)
-        self.direction = self.direction + 10
-        if self.direction >= 360:
-            self.direction = self.direction - 360
+        direction = self.direction
+        self.change_direction_to(self.speed, direction + 10)
+        if direction >= 360:
+            self.direction = direction - 360
 
         self.grid_ui_obj.canvas.move(self.rectangle, self.move_x, self.move_y)
 
