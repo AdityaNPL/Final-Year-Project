@@ -1,4 +1,5 @@
 from Tkinter import *
+import math
 
 
 class GridUIClass:
@@ -6,6 +7,7 @@ class GridUIClass:
     def __init__(self, grid_width, grid_height):
         self.grid_width = grid_width
         self.grid_height = grid_height
+        self.grid_diagonal = math.sqrt(math.pow(self.grid_height, 2) + math.pow(self.grid_width, 2))
         self.window = Tk()
         self.window.title("Grid World")
         self.canvas = Canvas(self.window, width=self.grid_width, height=self.grid_height)
