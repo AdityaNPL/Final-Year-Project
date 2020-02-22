@@ -1,0 +1,8 @@
+prefix=/home/aniraula/catkin_ws/install
+
+Name: simple_sim
+Description: Description of simple_sim
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
