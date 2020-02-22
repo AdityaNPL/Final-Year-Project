@@ -1,1 +1,1 @@
-set(ORDERED_PATHS "/opt/ros/lunar/lib;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/gazebo-7/plugins")
+set(ORDERED_PATHS "/opt/ros/kinetic/lib;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/gazebo-7/plugins")

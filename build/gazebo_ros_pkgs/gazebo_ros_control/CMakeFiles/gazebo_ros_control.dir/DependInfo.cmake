@@ -18,8 +18,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros_control/include"
-  "/opt/ros/lunar/include"
-  "/opt/ros/lunar/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/opt/ros/kinetic/include"
+  "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/gazebo-7"
   "/usr/include/sdformat-4.4"
   "/usr/include/ignition/math2"

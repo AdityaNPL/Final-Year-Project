@@ -68,38 +68,47 @@ endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/aniraula/catkin_ws/install/setup.bash")
+   "/home/aniraula/catkin_ws/install/setup.bash;/home/aniraula/catkin_ws/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/aniraula/catkin_ws/install" TYPE FILE FILES "/home/aniraula/catkin_ws/build/catkin_generated/installspace/setup.bash")
+file(INSTALL DESTINATION "/home/aniraula/catkin_ws/install" TYPE FILE FILES
+    "/home/aniraula/catkin_ws/build/catkin_generated/installspace/setup.bash"
+    "/home/aniraula/catkin_ws/build/catkin_generated/installspace/local_setup.bash"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/aniraula/catkin_ws/install/setup.sh")
+   "/home/aniraula/catkin_ws/install/setup.sh;/home/aniraula/catkin_ws/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/aniraula/catkin_ws/install" TYPE FILE FILES "/home/aniraula/catkin_ws/build/catkin_generated/installspace/setup.sh")
+file(INSTALL DESTINATION "/home/aniraula/catkin_ws/install" TYPE FILE FILES
+    "/home/aniraula/catkin_ws/build/catkin_generated/installspace/setup.sh"
+    "/home/aniraula/catkin_ws/build/catkin_generated/installspace/local_setup.sh"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/aniraula/catkin_ws/install/setup.zsh")
+   "/home/aniraula/catkin_ws/install/setup.zsh;/home/aniraula/catkin_ws/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/aniraula/catkin_ws/install" TYPE FILE FILES "/home/aniraula/catkin_ws/build/catkin_generated/installspace/setup.zsh")
+file(INSTALL DESTINATION "/home/aniraula/catkin_ws/install" TYPE FILE FILES
+    "/home/aniraula/catkin_ws/build/catkin_generated/installspace/setup.zsh"
+    "/home/aniraula/catkin_ws/build/catkin_generated/installspace/local_setup.zsh"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -119,9 +128,13 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/aniraula/catkin_ws/build/gtest/cmake_install.cmake")
   include("/home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_dev/cmake_install.cmake")
   include("/home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros_pkgs/cmake_install.cmake")
+  include("/home/aniraula/catkin_ws/build/mybot_control/cmake_install.cmake")
+  include("/home/aniraula/catkin_ws/build/mybot_description/cmake_install.cmake")
   include("/home/aniraula/catkin_ws/build/beginner_tutorials/cmake_install.cmake")
+  include("/home/aniraula/catkin_ws/build/simple_sim/cmake_install.cmake")
   include("/home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs/cmake_install.cmake")
   include("/home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros/cmake_install.cmake")
+  include("/home/aniraula/catkin_ws/build/mybot_gazebo/cmake_install.cmake")
   include("/home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/cmake_install.cmake")
   include("/home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros_control/cmake_install.cmake")
 

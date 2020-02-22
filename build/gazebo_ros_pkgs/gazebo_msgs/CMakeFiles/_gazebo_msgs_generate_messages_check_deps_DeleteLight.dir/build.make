@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/aniraula/catkin_ws/build
 include gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_DeleteLight.dir/progress.make
 
 gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_DeleteLight:
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/DeleteLight.srv 
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/DeleteLight.srv 
 
 _gazebo_msgs_generate_messages_check_deps_DeleteLight: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_DeleteLight
 _gazebo_msgs_generate_messages_check_deps_DeleteLight: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_DeleteLight.dir/build.make

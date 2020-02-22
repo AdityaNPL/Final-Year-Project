@@ -64,10 +64,10 @@ gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/gazebo_plugins_gencfg: /home/aniraula/
 
 
 /home/aniraula/catkin_ws/devel/include/gazebo_plugins/CameraSynchronizerConfig.h: /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/CameraSynchronizer.cfg
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/CameraSynchronizerConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.py.template
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/CameraSynchronizerConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.h.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/CameraSynchronizerConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.py.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/CameraSynchronizerConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/aniraula/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating dynamic reconfigure files from cfg/CameraSynchronizer.cfg: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/CameraSynchronizerConfig.h /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins/cfg/CameraSynchronizerConfig.py"
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/CameraSynchronizer.cfg /opt/ros/lunar/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/CameraSynchronizer.cfg /opt/ros/kinetic/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
 
 /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/CameraSynchronizerConfig.dox: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/CameraSynchronizerConfig.h
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/CameraSynchronizerConfig.dox
@@ -82,10 +82,10 @@ gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/gazebo_plugins_gencfg: /home/aniraula/
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/CameraSynchronizerConfig.wikidoc
 
 /home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosCameraConfig.h: /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/GazeboRosCamera.cfg
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosCameraConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.py.template
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosCameraConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.h.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosCameraConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.py.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosCameraConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/aniraula/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating dynamic reconfigure files from cfg/GazeboRosCamera.cfg: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosCameraConfig.h /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins/cfg/GazeboRosCameraConfig.py"
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/GazeboRosCamera.cfg /opt/ros/lunar/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/GazeboRosCamera.cfg /opt/ros/kinetic/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
 
 /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/GazeboRosCameraConfig.dox: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosCameraConfig.h
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/GazeboRosCameraConfig.dox
@@ -100,10 +100,10 @@ gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/gazebo_plugins_gencfg: /home/aniraula/
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/GazeboRosCameraConfig.wikidoc
 
 /home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosOpenniKinectConfig.h: /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/GazeboRosOpenniKinect.cfg
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosOpenniKinectConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.py.template
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosOpenniKinectConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.h.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosOpenniKinectConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.py.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosOpenniKinectConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/aniraula/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating dynamic reconfigure files from cfg/GazeboRosOpenniKinect.cfg: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosOpenniKinectConfig.h /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins/cfg/GazeboRosOpenniKinectConfig.py"
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/GazeboRosOpenniKinect.cfg /opt/ros/lunar/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/GazeboRosOpenniKinect.cfg /opt/ros/kinetic/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
 
 /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/GazeboRosOpenniKinectConfig.dox: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/GazeboRosOpenniKinectConfig.h
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/GazeboRosOpenniKinectConfig.dox
@@ -118,10 +118,10 @@ gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/gazebo_plugins_gencfg: /home/aniraula/
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/GazeboRosOpenniKinectConfig.wikidoc
 
 /home/aniraula/catkin_ws/devel/include/gazebo_plugins/HokuyoConfig.h: /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/Hokuyo.cfg
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/HokuyoConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.py.template
-/home/aniraula/catkin_ws/devel/include/gazebo_plugins/HokuyoConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.h.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/HokuyoConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.py.template
+/home/aniraula/catkin_ws/devel/include/gazebo_plugins/HokuyoConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/aniraula/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating dynamic reconfigure files from cfg/Hokuyo.cfg: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/HokuyoConfig.h /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins/cfg/HokuyoConfig.py"
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/Hokuyo.cfg /opt/ros/lunar/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins/cfg/Hokuyo.cfg /opt/ros/kinetic/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_plugins /home/aniraula/catkin_ws/devel/include/gazebo_plugins /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_plugins
 
 /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/HokuyoConfig.dox: /home/aniraula/catkin_ws/devel/include/gazebo_plugins/HokuyoConfig.h
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_plugins/docs/HokuyoConfig.dox

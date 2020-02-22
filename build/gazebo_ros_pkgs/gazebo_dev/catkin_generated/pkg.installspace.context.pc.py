@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "gazebo_dev"
 PROJECT_SPACE_DIR = "/home/aniraula/catkin_ws/install"
-PROJECT_VERSION = "2.7.6"
+PROJECT_VERSION = "2.5.19"

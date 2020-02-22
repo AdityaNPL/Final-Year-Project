@@ -2,4 +2,4 @@
 source_root_dir = "/home/aniraula/catkin_ws/src"
 whitelisted_packages = "".split(';') if "" != "" else []
 blacklisted_packages = "".split(';') if "" != "" else []
-underlay_workspaces = "/opt/ros/lunar".split(';') if "/opt/ros/lunar" != "" else []
+underlay_workspaces = "/home/aniraula/catkin_ws/devel;/opt/ros/kinetic".split(';') if "/home/aniraula/catkin_ws/devel;/opt/ros/kinetic" != "" else []

@@ -25,7 +25,7 @@ echo_and_run mkdir -p "$DESTDIR/home/aniraula/catkin_ws/install/lib/python2.7/di
 echo_and_run /usr/bin/env \
     PYTHONPATH="/home/aniraula/catkin_ws/install/lib/python2.7/dist-packages:/home/aniraula/catkin_ws/build/lib/python2.7/dist-packages:$PYTHONPATH" \
     CATKIN_BINARY_DIR="/home/aniraula/catkin_ws/build" \
-    "/usr/bin/python" \
+    "/usr/bin/python2" \
     "/home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/setup.py" \
     build --build-base "/home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros" \
     install \

@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/aniraula/catkin_ws/build
 include gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetJointTrajectory.dir/progress.make
 
 gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetJointTrajectory:
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/SetJointTrajectory.srv std_msgs/Header:geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point:trajectory_msgs/JointTrajectory:trajectory_msgs/JointTrajectoryPoint
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/SetJointTrajectory.srv std_msgs/Header:geometry_msgs/Quaternion:trajectory_msgs/JointTrajectory:geometry_msgs/Point:trajectory_msgs/JointTrajectoryPoint:geometry_msgs/Pose
 
 _gazebo_msgs_generate_messages_check_deps_SetJointTrajectory: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetJointTrajectory
 _gazebo_msgs_generate_messages_check_deps_SetJointTrajectory: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetJointTrajectory.dir/build.make

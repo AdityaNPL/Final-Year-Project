@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/aniraula/catkin_ws/build
 include gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelConfiguration.dir/progress.make
 
 gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelConfiguration:
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/SetModelConfiguration.srv 
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/SetModelConfiguration.srv 
 
 _gazebo_msgs_generate_messages_check_deps_SetModelConfiguration: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelConfiguration
 _gazebo_msgs_generate_messages_check_deps_SetModelConfiguration: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelConfiguration.dir/build.make

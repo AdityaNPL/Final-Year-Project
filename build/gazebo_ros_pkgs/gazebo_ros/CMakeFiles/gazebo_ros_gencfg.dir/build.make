@@ -58,10 +58,10 @@ gazebo_ros_pkgs/gazebo_ros/CMakeFiles/gazebo_ros_gencfg: /home/aniraula/catkin_w
 
 
 /home/aniraula/catkin_ws/devel/include/gazebo_ros/PhysicsConfig.h: /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg
-/home/aniraula/catkin_ws/devel/include/gazebo_ros/PhysicsConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.py.template
-/home/aniraula/catkin_ws/devel/include/gazebo_ros/PhysicsConfig.h: /opt/ros/lunar/share/dynamic_reconfigure/templates/ConfigType.h.template
+/home/aniraula/catkin_ws/devel/include/gazebo_ros/PhysicsConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.py.template
+/home/aniraula/catkin_ws/devel/include/gazebo_ros/PhysicsConfig.h: /opt/ros/kinetic/share/dynamic_reconfigure/templates/ConfigType.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/aniraula/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating dynamic reconfigure files from cfg/Physics.cfg: /home/aniraula/catkin_ws/devel/include/gazebo_ros/PhysicsConfig.h /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_ros/cfg/PhysicsConfig.py"
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg /opt/ros/lunar/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_ros /home/aniraula/catkin_ws/devel/include/gazebo_ros /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_ros
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros && ../../catkin_generated/env_cached.sh /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_ros/setup_custom_pythonpath.sh /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros/cfg/Physics.cfg /opt/ros/kinetic/share/dynamic_reconfigure/cmake/.. /home/aniraula/catkin_ws/devel/share/gazebo_ros /home/aniraula/catkin_ws/devel/include/gazebo_ros /home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_ros
 
 /home/aniraula/catkin_ws/devel/share/gazebo_ros/docs/PhysicsConfig.dox: /home/aniraula/catkin_ws/devel/include/gazebo_ros/PhysicsConfig.h
 	@$(CMAKE_COMMAND) -E touch_nocreate /home/aniraula/catkin_ws/devel/share/gazebo_ros/docs/PhysicsConfig.dox

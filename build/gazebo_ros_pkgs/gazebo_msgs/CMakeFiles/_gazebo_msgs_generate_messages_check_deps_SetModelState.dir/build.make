@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/aniraula/catkin_ws/build
 include gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelState.dir/progress.make
 
 gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelState:
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/SetModelState.srv gazebo_msgs/ModelState:geometry_msgs/Pose:geometry_msgs/Twist:geometry_msgs/Point:geometry_msgs/Quaternion:geometry_msgs/Vector3
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py gazebo_msgs /home/aniraula/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs/srv/SetModelState.srv geometry_msgs/Twist:gazebo_msgs/ModelState:geometry_msgs/Quaternion:geometry_msgs/Vector3:geometry_msgs/Point:geometry_msgs/Pose
 
 _gazebo_msgs_generate_messages_check_deps_SetModelState: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelState
 _gazebo_msgs_generate_messages_check_deps_SetModelState: gazebo_ros_pkgs/gazebo_msgs/CMakeFiles/_gazebo_msgs_generate_messages_check_deps_SetModelState.dir/build.make

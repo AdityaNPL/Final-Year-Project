@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/aniraula/catkin_ws/build
 include gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/clean_test_results_gazebo_plugins.dir/progress.make
 
 gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/clean_test_results_gazebo_plugins:
-	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && /usr/bin/python /opt/ros/lunar/share/catkin/cmake/test/remove_test_results.py /home/aniraula/catkin_ws/build/test_results/gazebo_plugins
+	cd /home/aniraula/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins && /usr/bin/python2 /opt/ros/kinetic/share/catkin/cmake/test/remove_test_results.py /home/aniraula/catkin_ws/build/test_results/gazebo_plugins
 
 clean_test_results_gazebo_plugins: gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/clean_test_results_gazebo_plugins
 clean_test_results_gazebo_plugins: gazebo_ros_pkgs/gazebo_plugins/CMakeFiles/clean_test_results_gazebo_plugins.dir/build.make

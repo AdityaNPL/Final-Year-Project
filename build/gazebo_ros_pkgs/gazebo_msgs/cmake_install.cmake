@@ -95,7 +95,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_msgs")
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/aniraula/catkin_ws/devel/lib/python2.7/dist-packages/gazebo_msgs")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "gazebo_ros_pkgs")
-set(gazebo_ros_pkgs_VERSION "2.7.6")
+set(gazebo_ros_pkgs_VERSION "2.5.19")
 set(gazebo_ros_pkgs_MAINTAINER "Jose Luis Rivero <jrivero@osrfoundation.org>")
 set(gazebo_ros_pkgs_PACKAGE_FORMAT "2")
 set(gazebo_ros_pkgs_BUILD_DEPENDS )
