@@ -1,0 +1,14 @@
+[35m[1mScanning dependencies of target uAvionix.xml-v1.0[0m
+[  4%] [34m[1mGenerating include/v1.0/uAvionix/uAvionix.h[0m
+Traceback (most recent call last):
+  File "/home/aniraula/catkin_ws/src/mavlink/pymavlink/tools/mavgen.py", line 16, in <module>
+    from pymavlink.generator import mavgen
+  File "/home/aniraula/catkin_ws/src/mavlink/pymavlink/generator/mavgen.py", line 12, in <module>
+    from future import standard_library
+ImportError: No module named future
+CMakeFiles/uAvionix.xml-v1.0.dir/build.make:62: recipe for target 'include/v1.0/uAvionix/uAvionix.h' failed
+make[2]: *** [include/v1.0/uAvionix/uAvionix.h] Error 1
+CMakeFiles/Makefile2:67: recipe for target 'CMakeFiles/uAvionix.xml-v1.0.dir/all' failed
+Makefile:116: recipe for target 'all' failed
+make[1]: *** [CMakeFiles/uAvionix.xml-v1.0.dir/all] Error 2
+make: *** [all] Error 2

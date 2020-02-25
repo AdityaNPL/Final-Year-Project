@@ -1,0 +1,9 @@
+[31m[1mCMake Error[0m at /usr/share/cmake-3.5/Modules/FindPackageHandleStandardArgs.cmake:148 (message):
+  Could NOT find GeographicLib (missing: GeographicLib_LIBRARIES
+  GeographicLib_INCLUDE_DIRS)
+[36mCall Stack (most recent call first):[0m
+  /usr/share/cmake-3.5/Modules/FindPackageHandleStandardArgs.cmake:388 (_FPHSA_FAILURE_MESSAGE)
+  /home/aniraula/catkin_ws/src/mavros/libmavconn/cmake/Modules/FindGeographicLib.cmake:14 (find_package_handle_standard_args)
+  CMakeLists.txt:42 (find_package)
+
+
