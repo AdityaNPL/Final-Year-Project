@@ -13,7 +13,7 @@ def listener():
     # run simultaneously.
     rospy.init_node('firefly1', anonymous=True)
 
-    rospy.Subscriber("robot_state_publisher", String, callback)
+    rospy.Subscriber("/firefly1/ground_truth/position", String, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
