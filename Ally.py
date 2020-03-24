@@ -30,10 +30,13 @@ class Ally:
         print("########################################")
 
     def move(self, x, y, z):
+        if z<2:
+            z = 2
         subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(1), "__ns:=firefly"+str(self.id)])
 
     def setup(self):
         self.pos = [random.uniform(-10,10),random.uniform(-10,10),random.uniform(-10,10)]
+        self.move(self.pos[0], self.pos[1], self.pos[2])
 
     def randRs(self):
         self.r1 = [random.uniform(0,1),random.uniform(0,1),random.uniform(0,1)]
@@ -60,7 +63,7 @@ class Ally:
         self.calA()
         self.calC()
         self.getStatus()
-        self.CalD()
+        self.calD()
         newPos = self.sub(self.prey, self.mult(self.A, self.D))
         self.move(newPos[0], newPos[1], newPos[2])
 

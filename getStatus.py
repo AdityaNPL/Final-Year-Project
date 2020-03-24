@@ -8,7 +8,7 @@ def roboStat(num):
 	x=position.split("x:")[1].split("\n")[0]
 	y=position.split("y:")[1].split("\n")[0]
 	z=position.split("z:")[1].split("\n")[0]
-	x=int(round(float(x1)))
-	y=int(round(float(y1)))
-	z=int(round(float(z1)))
+	x=int(round(float(x)))
+	y=int(round(float(y)))
+	z=int(round(float(z)))
 	return [x,y,z]
