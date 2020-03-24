@@ -22,14 +22,14 @@ class Ally:
     def setAllies(self, allies):
         self.allies = allies
 
-    def getStatus(self):
+    def calcStatus(self):
         self.pos = gs.roboStat(self.id)
         self.history.append((self.step,self.pos))
         print("pos " + str(self.id))
         print(self.pos)
 
     def printHistory(self):
-        self.getStatus()
+        self.calcStatus()
         print("########################################")
         print("Robo:" + str(self.id))
         print(self.history)
@@ -68,7 +68,7 @@ class Ally:
         self.randRs()
         self.calA()
         self.calC()
-        self.getStatus()
+        self.calcStatus()
         self.calD()
         newPos = self.sub(self.prey, self.mult(self.A, self.D))
         newPos = self.checkCollision(newPos)
@@ -76,8 +76,14 @@ class Ally:
 
     def checkCollision(self,newPos):
         for ally in self.allies:
-            if ally.id
-
+            if ally.id != self.id:
+                ally.calcStatus()
+                allyPos = ally.pos
+                for i in range(3):
+                    if allypos[i] == newPos[i]:
+                        newPos[i] += 1
+        return newPos
+        
     def sub(self, a, b):
         return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]
 
