@@ -77,7 +77,3 @@ class AdversaryRobotClass(Robot.RobotClass):
         for opp in list_of_opponent:
             if abs(pos_x-opp.pos_x) <= opp.size and abs(pos_y-opp.pos_y) <= opp.size:
                 self.stop = True
-
-
-
-

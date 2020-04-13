@@ -55,6 +55,5 @@ class AllyRobotClass(Robot.RobotClass):
         if not self.force_const<10000:
             self.force_const -= 1000
 
-        print(self.force_const)
+        # print(self.force_const)
         return direction
-
