@@ -1,10 +1,11 @@
 import math
 import abc
-
+import csv
+import os
 
 class RobotClass:
 
-    def __init__(self, pos_x, pos_y, grid_ui_obj):
+    def __init__(self, pos_x, pos_y, grid_ui_obj, label_text):
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.speed_x = 0
@@ -19,8 +20,14 @@ class RobotClass:
         self.opponent_details = None
         self.ally_details = None
         self.step_delay_rate = 10
-        self.label_txt = ""
+        self.time_step = 0
+        self.label_txt = label_text
         self.stop = False
+        if os.path.exists("./DataDump/data_"+self.label_txt+".csv"):
+            os.remove("./DataDump/data_"+self.label_txt+".csv")
+        with open("./DataDump/data_"+self.label_txt+".csv", "w") as dataSheet:
+            dataSheetWritter = csv.writer(dataSheet)
+            dataSheetWritter.writerow(['Time Stamp', 'pos X', 'pos Y', 'speed X', 'speed Y'])
 
     '''
     Direction = [0,359] => anti-clockwise angle from horizontal 
@@ -65,7 +72,13 @@ class RobotClass:
     def update_position(self):
         self.pos_x += self.speed_x
         self.pos_y += self.speed_y
+        self.time_step += 1
+        self.print_position_to_file()
 
+    def print_position_to_file(self):
+        with open("./DataDump/data_"+self.label_txt+".csv", "ab") as dataSheet:
+            dataSheetWritter = csv.writer(dataSheet)
+            dataSheetWritter.writerow([self.time_step, self.pos_x, self.pos_y, self.speed_x, self.speed_y])
 
     @abc.abstractmethod
     def move(self):

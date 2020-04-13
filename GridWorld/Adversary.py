@@ -6,11 +6,10 @@ import time
 class AdversaryRobotClass(Robot.RobotClass):
 
     def __init__(self, pos_x, pos_y, grid_ui_obj, label_txt):
-        Robot.RobotClass.__init__(self, pos_x, pos_y, grid_ui_obj)
+        Robot.RobotClass.__init__(self, pos_x, pos_y, grid_ui_obj, label_txt)
         self.rectangle = self.grid_ui_obj.canvas.create_rectangle(self.pos_x, self.pos_y,
                                                                   self.pos_x+self.size, self.pos_y+self.size,
                                                                   fill="red")
-        self.label_txt = label_txt
         self.label = self.grid_ui_obj.canvas.create_text((self.pos_x, self.pos_y), text=label_txt)
         self.timer_start = time.time()
         self.timer_end = time.time()

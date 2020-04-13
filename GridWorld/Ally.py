@@ -5,11 +5,10 @@ import Robot
 class AllyRobotClass(Robot.RobotClass):
 
     def __init__(self, pos_x, pos_y, grid_ui_obj, labeltxt):
-        Robot.RobotClass.__init__(self, pos_x, pos_y, grid_ui_obj)
+        Robot.RobotClass.__init__(self, pos_x, pos_y, grid_ui_obj, labeltxt)
         self.rectangle = self.grid_ui_obj.canvas.create_rectangle(self.pos_x, self.pos_y,
                                                                   self.pos_x + self.size, self.pos_y + self.size,
                                                                   fill="blue")
-        self.label_txt = labeltxt
         self.label = self.grid_ui_obj.canvas.create_text((self.pos_x, self.pos_y), text=labeltxt)
         self.force_const = 500000
 
@@ -20,7 +19,6 @@ class AllyRobotClass(Robot.RobotClass):
             self.ally_details.append(ally)
 
     def move(self):
-
         next_dir = self.get_best_dir()
         self.change_direction_to(next_dir)
         self.update_position()
