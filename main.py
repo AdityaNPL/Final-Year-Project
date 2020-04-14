@@ -17,13 +17,9 @@ for i in range(robots):
 for i in range(maxIterations):
 	print(str(i+1) + " / " + str(maxIterations))
 	for i in range(robots):
-			allies[i].calcWaypoints()
+		allies[i].calcWaypoints()
 	for i in range(robots):
-			try:
-				allies[i].runMove()
-			except:
-				print("e")
+		allies[i].runMove()
 
 for i in range(robots):
 	allies[i].printHistory()
-
