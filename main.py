@@ -4,10 +4,10 @@ allies = []
 maxIterations = 5
 robots = 4
 # Adv
-Ally.Ally(robots+1,maxIterations).move(5,5,35)
+Ally.Ally(robots+1,maxIterations, False).move(5,5,35)
 
 for i in range(robots):
-	allies.append(Ally.Ally(i+1,maxIterations))
+	allies.append(Ally.Ally(i+1,maxIterations, False))
 
 for i in range(robots):
 	allies[i].setup()

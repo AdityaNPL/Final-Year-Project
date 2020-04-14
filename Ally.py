@@ -5,7 +5,7 @@ import random
 import csv
 
 class Ally:
-    def __init__(self, id, maxIterations):
+    def __init__(self, id, maxIterations, realSim):
          self.id = id
          self.step = 0
          self.maxIterations = maxIterations
@@ -20,12 +20,14 @@ class Ally:
          self.history = {}
          self.allies = []
          self.newPos = [0,0,0]
+         self.realSim = realSim
 
     def setAllies(self, allies):
         self.allies = allies
 
     def calcStatus(self):
-        # self.pos = gs.roboStat(self.id)
+        if self.realSim:
+            self.pos = gs.roboStat(self.id)
         self.history[self.step] = self.pos
 
     def printHistory(self):
@@ -40,8 +42,10 @@ class Ally:
     def move(self, x, y, z):
         if z<2:
             z = 2
-        self.pos = [x,y,z]
-        # subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(0), "__ns:=firefly"+str(self.id)])
+        if self.realSim:
+            subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(0), "__ns:=firefly"+str(self.id)])
+        else:
+            self.pos = [x,y,z]
 
     def setup(self):
         self.pos = [random.uniform(-10,10),random.uniform(-10,10),random.uniform(10,50)]
