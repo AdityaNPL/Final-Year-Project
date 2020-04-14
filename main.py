@@ -3,11 +3,12 @@ import Ally
 allies = []
 maxIterations = 5
 robots = 4
+realSim = False
 # Adv
-Ally.Ally(robots+1,maxIterations, False).move(5,5,35)
+Ally.Ally(robots+1,maxIterations, realSim).move(5,5,35)
 
 for i in range(robots):
-	allies.append(Ally.Ally(i+1,maxIterations, False))
+	allies.append(Ally.Ally(i+1,maxIterations, realSim))
 
 for i in range(robots):
 	allies[i].setup()
