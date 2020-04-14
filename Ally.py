@@ -25,10 +25,8 @@ class Ally:
         self.allies = allies
 
     def calcStatus(self):
-        self.pos = gs.roboStat(self.id)
+        # self.pos = gs.roboStat(self.id)
         self.history[self.step] = self.pos
-        # print("pos " + str(self.id))
-        # print(self.pos)
 
     def printHistory(self):
         self.calcStatus()
@@ -42,7 +40,8 @@ class Ally:
     def move(self, x, y, z):
         if z<2:
             z = 2
-        subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(0), "__ns:=firefly"+str(self.id)])
+        self.pos = [x,y,z]
+        # subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(0), "__ns:=firefly"+str(self.id)])
 
     def setup(self):
         self.pos = [random.uniform(-10,10),random.uniform(-10,10),random.uniform(10,50)]
@@ -78,7 +77,7 @@ class Ally:
 
     def checkCollision(self):
         if self.newPos[2]<10:
-            self.newPos[2] = 10 
+            self.newPos[2] = 10
         for ally in self.allies:
             if ally.id != self.id:
                 ally.calcStatus()
@@ -86,7 +85,7 @@ class Ally:
                 for i in range(3):
                     if allyPos[i] == self.newPos[i]:
                         self.newPos[i] += 1
-        
+
     def sub(self, a, b):
         return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]
 
@@ -98,7 +97,6 @@ class Ally:
         self.step += 1
         self.newPos = self.encircle([5,5,35])
         self.checkCollision()
-    
+
     def runMove(self):
         self.move(self.newPos[0], self.newPos[1], self.newPos[2])
-            
