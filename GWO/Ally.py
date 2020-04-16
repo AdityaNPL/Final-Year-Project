@@ -19,11 +19,15 @@ class Ally:
          self.pos = [0,0,0]
          self.history = {}
          self.allies = []
+         self.adv = None
          self.newPos = [0,0,0]
          self.realSim = realSim
 
     def setAllies(self, allies):
         self.allies = allies
+
+    def setAdv(self, adv):
+        self.adv = adv
 
     def calcStatus(self):
         if self.realSim:
@@ -32,12 +36,18 @@ class Ally:
 
     def printHistory(self):
         self.calcStatus()
-        print("########################################")
-        print("Robo:" + str(self.id))
-        with open('./history/robo'+str(self.id)+'.csv', 'w+') as out:
+        # print("########################################")
+        # print("Robo:" + str(self.id))
+        with open('./DataDump/data_'+str(self.id)+'.csv', 'w+') as out:
+            posList = []
             for key in self.history.keys():
-                out.write("%s,%s,%s,%s\n"%(key,self.history[key][0],self.history[key][1],self.history[key][2]))
-        print(self.history)
+                posList.append([key,self.history[key][0],self.history[key][1],self.history[key][2]])
+            for i in range(len(posList)):
+                speed = [0,0,0]
+                pos = posList[i]
+                if i != 0:
+                    speed = [pos[1] - posList[i-1][1], pos[2]- posList[i-1][2], pos[3]- posList[i-1][3]]
+                out.write("%s,%s,%s,%s,%s,%s,%s\n"%(pos[0],pos[1],pos[2],pos[3],speed[0],speed[1],speed[2]))
 
     def move(self, x, y, z):
         if z<2:
@@ -99,7 +109,11 @@ class Ally:
     def calcWaypoints(self):
         self.calcStatus()
         self.step += 1
-        self.newPos = self.encircle([5,5,35])
+        self.newPos = self.encircle(self.adv.pos)
+        for i in range(3):
+            diff = self.newPos[i] - self.pos[i]
+            if abs(diff) > 5:
+                self.newPos[i] = self.pos[i] + ((diff/diff) * 5)
         self.checkCollision()
 
     def runMove(self):
