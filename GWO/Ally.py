@@ -71,7 +71,7 @@ class Ally:
         x,y,z = (random.uniform(-50,50),random.uniform(-50,50),0)
         if self.realSim:
             subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(0), "__ns:=firefly"+str(self.id)])
-        print(x,y,z)
+        # print(x,y,z)
 
     def randRs(self):
         self.r1 = [random.uniform(0,1),random.uniform(0,1),random.uniform(0,1)]

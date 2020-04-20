@@ -16,7 +16,7 @@ class EAsim:
 			self.robots.append(Ally.Ally(i+1,self.maxIterations, self.maxSpeed, self.decreasingVal, self.realSim))
 			self.allies.append(self.robots[i])
 
-		self.robots.append(Adversary.Adversary(self.robotNum, self.maxIterations, self.maxSpeed self.realSim))
+		self.robots.append(Adversary.Adversary(self.robotNum, self.maxIterations, self.maxSpeed, self.realSim))
 
 		for i in range(self.robotNum):
 			self.robots[i].setup()
@@ -84,11 +84,11 @@ class EAsim:
 			finalLineOfSight += (lineOfSight[0]/lineOfSight[1])
 			blastRange = test.countBlastRange()
 			finalBlastRange += (blastRange[0]/blastRange[1])
-			finalRateOfChange += roboTest.rateOfChangeOfAngleOfSelf()[-1][1]
+			finalRateOfChange += abs(test.rateOfChangeOfAngleOfSelf()[-1][1])
 
 		finalLineOfSight = finalLineOfSight / (self.robotNum - 1)
 		finalBlastRange = finalBlastRange / (self.robotNum - 1)
 		finalRateOfChange = 1 - (finalRateOfChange / (self.robotNum - 1))
 		finalTime = finalTime / 1000
 
-		return 25*finalTime + 25*finalLineOfSight + 25*finalBlastRange + 25*finalRateOfChange 
+		return 25*finalTime + 25*finalLineOfSight + 25*finalBlastRange + 25*finalRateOfChange

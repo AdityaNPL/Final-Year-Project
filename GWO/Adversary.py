@@ -8,9 +8,10 @@ import csv
 
 class Adversary():
 
-    def __init__(self, id, maxIterations, realSim):
+    def __init__(self, id, maxIterations, maxSpeed, realSim):
         self.id = id
         self.step = 0
+        self.maxSpeed = maxSpeed
         self.pos = [0,0,0]
         self.history = {}
         self.allies = []
@@ -21,6 +22,7 @@ class Adversary():
         self.no_of_move_calls = 0
         # self.grid_distribution = [[0 for i in range(self.grid_ui_obj.grid_width/100+1)] for j in range(self.grid_ui_obj.grid_height/100+1)]
         self.avgDistFromCenter = 0
+        self.dataToAnalyse = []
 
     def setAllies(self, allies):
         self.allies = allies
@@ -31,20 +33,26 @@ class Adversary():
         self.history[self.step] = self.pos
 
 
-    def printHistory(self):
+    def printHistory(self, write):
         self.calcStatus()
         # print("########################################")
         # print("Robo:" + str(self.id))
-        with open('./DataDump/data_adv'+str(self.id)+'.csv', 'w+') as out:
-            posList = []
-            for key in self.history.keys():
-                posList.append([key,self.history[key][0],self.history[key][1],self.history[key][2]])
-            for i in range(len(posList)):
-                speed = [0,0,0]
-                pos = posList[i]
-                if i != 0:
-                    speed = [pos[1] - posList[i-1][1], pos[2]- posList[i-1][2], pos[3]- posList[i-1][3]]
-                out.write("%s,%s,%s,%s,%s,%s,%s\n"%(pos[0],pos[1],pos[2],pos[3],speed[0],speed[1],speed[2]))
+
+        posList = []
+        for key in self.history.keys():
+            posList.append([key,self.history[key][0],self.history[key][1],self.history[key][2]])
+        for i in range(len(posList)):
+            speed = [0,0,0]
+            pos = posList[i]
+            if i != 0:
+                speed = [pos[1] - posList[i-1][1], pos[2]- posList[i-1][2], pos[3]- posList[i-1][3]]
+            self.dataToAnalyse.append((pos[0],pos[1],pos[2],pos[3],speed[0],speed[1],speed[2]))
+
+        if write:
+            with open('./DataDump/data_adv'+str(self.id)+'.csv', 'w+') as out:
+                for data in self.dataToAnalyse:
+                    out.write("%s,%s,%s,%s,%s,%s,%s\n"%data)
+
 
     def move(self, x, y, z):
         if z<2:
@@ -68,8 +76,8 @@ class Adversary():
         vector = self.getVector(self.pos, [0,0,50])
         for i in range(3):
             direction[i] += vector[i]
-            if abs(direction[i]) > 5:
-                direction[i] = direction[i]/direction[i] * 5
+            if abs(direction[i]) > self.maxSpeed:
+                direction[i] = direction[i]/direction[i] * self.maxSpeed
         return [self.pos[0] + direction[0], self.pos[1] + direction[1], self.pos[2] + direction[2]]
 
     def getVector(self, start, end):

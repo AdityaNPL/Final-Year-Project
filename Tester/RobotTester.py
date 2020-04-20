@@ -62,16 +62,22 @@ class RobotTester:
 
     def calcAngleX(self, selfPoint, refPoint):
         magYZ = self.calcDistanceBetweenPoints([selfPoint[1], selfPoint[2]], [refPoint[1], refPoint[2]])
+        if (magYZ == 0):
+            return 90
         tanVal = (refPoint[2] - selfPoint[2])/(magYZ)
         return math.degrees(math.atan(tanVal))
 
     def calcAngleY(self, selfPoint, refPoint):
         magXZ = self.calcDistanceBetweenPoints([selfPoint[0], selfPoint[2]], [refPoint[0], refPoint[2]])
+        if (magXZ == 0):
+            return 90
         tanVal = (refPoint[2] - selfPoint[2])/(magXZ)
         return math.degrees(math.atan(tanVal))
 
     def calcAngleZ(self, selfPoint, refPoint):
         magXY = self.calcDistanceBetweenPoints([selfPoint[0], selfPoint[1]], [refPoint[0], refPoint[1]])
+        if (magXY == 0):
+            return 90
         tanVal = (refPoint[2] - selfPoint[2])/(magXY)
         return math.degrees(math.atan(tanVal))
 
