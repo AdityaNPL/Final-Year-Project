@@ -1,7 +1,7 @@
 import RobotTester as rt
 import matplotlib.pyplot as plt
 
-roboTest = rt.RobotTester("./DataDump/data_3.csv", "./DataDump/data_adv5.csv")
+roboTest = rt.RobotTester("./DataDump/data_1.csv", "./DataDump/data_adv4.csv")
 roboTest.getDetailsFromFile()
 
 res = roboTest.timeTakenToCapture()

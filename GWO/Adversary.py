@@ -55,17 +55,17 @@ class Adversary():
             self.pos = [x,y,z]
 
     def setup(self):
-        self.pos = [random.uniform(-10,10),random.uniform(-10,10),random.uniform(10,60)]
+        self.pos = [random.uniform(-10,10),random.uniform(-10,10),random.uniform(40,60)]
         self.move(self.pos[0], self.pos[1], self.pos[2])
 
     def calcVector(self):
         direction = [0,0,0]
         for opponent in self.allies:
-            vector = self.getVector(opponent.pos, self.pos)
+            vector = list(map(lambda x: x*0.1, self.getVector(opponent.pos, self.pos)))
             for i in range(3):
                 direction[i] += vector[i]
 
-        vector = self.getVector(self.pos, [0,0,35])
+        vector = self.getVector(self.pos, [0,0,50])
         for i in range(3):
             direction[i] += vector[i]
             if abs(direction[i]) > 5:

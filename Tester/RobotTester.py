@@ -6,9 +6,16 @@ class RobotTester:
         self.selfFile = selfFile
         self.oppFile = oppFile
         self.selfPos = []
-        self.oppPos = []
         self.selfSpeed = []
+        self.oppPos = []
         self.oppSpeed = []
+
+        if isinstance(selfFile, list):
+            self.selfPos = selfFile[0]
+            self.oppPos = oppFile[0]
+            self.selfSpeed = selfFile[1]
+            self.oppSpeed = oppFile[1]
+
         self.lineOfSight = 15 # in degrees
         self.blastRange = 50
 
