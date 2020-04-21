@@ -70,7 +70,8 @@ class EAsim:
 			oppSpeed.append((float(row[4]), float(row[5]), float(row[6])))
 		test = rt.RobotTester([oppPos,oppSpeed], [oppPos,oppSpeed])
 		advRateOfChange = abs(test.rateOfChangeOfAngleOfSelf()[-1][1])/360.0
-
+		finalTime = test.timeTakenToCapture()
+		finalTimeFactor = 1 - finalTime /self.maxIterations
 		for i in range(self.robotNum - 1):
 			robot = self.robots[i]
 			data = robot.dataToAnalyse
@@ -82,7 +83,6 @@ class EAsim:
 
 			test = rt.RobotTester([selfPos,selfSpeed], [oppPos,oppSpeed])
 
-			finalTime = test.timeTakenToCapture()
 			lineOfSight = test.countLineOfSight()
 			finalLineOfSight += (lineOfSight[0]*1.0/lineOfSight[1])
 			blastRange = test.countBlastRange()
@@ -92,7 +92,7 @@ class EAsim:
 		finalLineOfSight = finalLineOfSight / (self.robotNum - 1)
 		finalBlastRange = finalBlastRange / (self.robotNum - 1)
 		finalRateOfChange = 1 - (finalRateOfChange / (self.robotNum - 1))
-		finalTimeFactor = 1 - finalTime / 1000
+
 		if finalTimeFactor > 0:
 			print("Finished Early")
 			print(finalTime, finalTimeFactor)
