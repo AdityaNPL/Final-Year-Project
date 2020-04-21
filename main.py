@@ -28,6 +28,7 @@ initialPop = 100
 population = []
 fitnessVal = 1
 fitnessHistory = []
+populationHistory = []
 
 for i in range(initialPop):
     genes = {"iterations":randint(100, 1000), "maxSpeed":randint(1, 10), "decreasingVal":randint(1, 10)}
@@ -35,6 +36,11 @@ for i in range(initialPop):
 
 while fitnessVal < 100 and len(population) >= 1:
     print(len(population), fitnessVal)
+    populationHistory.append(len(population))
+    if(len(population) < 5):
+        for r in population:
+            print(r.genes)
+
     parents = []
     sumFit = 0
     for sim in population:
@@ -61,6 +67,14 @@ while fitnessVal < 100 and len(population) >= 1:
         newPopulation.append(EAsim.EAsim(child2))
 
     population = newPopulation
-    fitnessVal += 1
+    if fitnessVal >= 90 or fitnessVal <= 5:
+        fitnessVal += 2
+    elif fitnessVal >= 80 or fitnessVal <= 20:
+        fitnessVal += 4
+    elif fitnessVal >= 60 or fitnessVal <= 40:
+        fitnessVal += 6
+    else:
+        fitnessVal += 8
 
 print(fitnessHistory)
+print(populationHistory)
