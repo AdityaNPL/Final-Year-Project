@@ -92,7 +92,7 @@ class EAsim:
 		finalLineOfSight = finalLineOfSight / (self.robotNum - 1)
 		finalBlastRange = finalBlastRange / (self.robotNum - 1)
 		finalRateOfChange = 1 - (finalRateOfChange / (self.robotNum - 1))
-		finalTimeFactor = finalTime / 1000
+		finalTimeFactor = 1 - finalTime / 1000
 		if finalTimeFactor > 0:
 			print("Finished Early")
 			print(finalTime, finalTimeFactor)
