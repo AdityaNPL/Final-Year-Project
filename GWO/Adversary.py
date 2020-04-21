@@ -73,11 +73,23 @@ class Adversary():
             for i in range(3):
                 direction[i] += vector[i]
 
-        vector = self.getVector(self.pos, [0,0,50])
+        vectorToCenter = self.getVector(self.pos, [0,0,50])
+        vectors = [vectorToCenter]
+        self.avgDistFromCenter += self.magnitude(vectorToCenter)
+        vectors.append(self.getVector([self.pos[0],self.pos[1],200], self.pos))
+        vectors.append(self.getVector([self.pos[0],self.pos[1],2], self.pos))
+        vectors.append(self.getVector([self.pos[0],-200,self.pos[2]], self.pos))
+        vectors.append(self.getVector([self.pos[0],200,self.pos[2]], self.pos))
+        vectors.append(self.getVector([-200,self.pos[1],self.pos[2]], self.pos))
+        vectors.append(self.getVector([200,self.pos[1],self.pos[2]], self.pos))
+        for vector in vectors:
+            for i in range(3):
+                direction[i] += vector[i]
+
         for i in range(3):
-            direction[i] += vector[i]
             if abs(direction[i]) > self.maxSpeed:
                 direction[i] = direction[i]/direction[i] * self.maxSpeed
+
         return [self.pos[0] + direction[0], self.pos[1] + direction[1], self.pos[2] + direction[2]]
 
     def getVector(self, start, end):
@@ -91,3 +103,6 @@ class Adversary():
 
     def runMove(self):
         self.move(self.newPos[0], self.newPos[1], self.newPos[2])
+
+    def magnitude(self, vector):
+        return math.sqrt(vector[0]**2 + vector[1]**2 + vector[2]**2 )

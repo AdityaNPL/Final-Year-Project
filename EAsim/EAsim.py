@@ -62,11 +62,14 @@ class EAsim:
 
 		robot = self.robots[self.robotNum-1]
 		data = robot.dataToAnalyse
+		avgDistFromCenter = min((robot.avgDistFromCenter / len(data)) / 10000, 1)
 		oppPos = []
 		oppSpeed = []
 		for row in data:
 			oppPos.append((float(row[1]), float(row[2]), float(row[3])))
 			oppSpeed.append((float(row[4]), float(row[5]), float(row[6])))
+		test = rt.RobotTester([oppPos,oppSpeed], [oppPos,oppSpeed])
+		advRateOfChange = abs(test.rateOfChangeOfAngleOfSelf()[-1][1])/360.0
 
 		for i in range(self.robotNum - 1):
 			robot = self.robots[i]
@@ -81,14 +84,20 @@ class EAsim:
 
 			finalTime = test.timeTakenToCapture()
 			lineOfSight = test.countLineOfSight()
-			finalLineOfSight += (lineOfSight[0]/lineOfSight[1])
+			finalLineOfSight += (lineOfSight[0]*1.0/lineOfSight[1])
 			blastRange = test.countBlastRange()
-			finalBlastRange += (blastRange[0]/blastRange[1])
-			finalRateOfChange += abs(test.rateOfChangeOfAngleOfSelf()[-1][1])
+			finalBlastRange += (blastRange[0]*1.0/blastRange[1])
+			finalRateOfChange += abs(test.rateOfChangeOfAngleOfSelf()[-1][1]) / 360.0
 
 		finalLineOfSight = finalLineOfSight / (self.robotNum - 1)
 		finalBlastRange = finalBlastRange / (self.robotNum - 1)
 		finalRateOfChange = 1 - (finalRateOfChange / (self.robotNum - 1))
-		finalTime = finalTime / 1000
+		finalTimeFactor = finalTime / 1000
+		if finalTimeFactor > 0:
+			print("Finished Early")
+			print(finalTime, finalTimeFactor)
 
-		return 25*finalTime + 25*finalLineOfSight + 25*finalBlastRange + 25*finalRateOfChange
+		fitnessVal = 5*finalTimeFactor + 19*finalLineOfSight + 19*finalBlastRange + 19*finalRateOfChange + 19*avgDistFromCenter + 19*advRateOfChange
+		# print(finalTime,  finalLineOfSight, finalBlastRange, finalRateOfChange, avgDistFromCenter, advRateOfChange)
+		# print(fitnessVal)
+		return fitnessVal
