@@ -10,10 +10,10 @@ class GridClass:
     def __init__(self):
         self.grid_ui_obj = GridUI.GridUIClass(self.grid_width, self.grid_height)
 
-        self.adv = Adversary.AdversaryRobotClass(650, 200, self.grid_ui_obj, "adv1")
-        self.ally1 = Ally.AllyRobotClass(0, 0, self.grid_ui_obj, "1")
-        self.ally2 = Ally.AllyRobotClass(100, 0, self.grid_ui_obj, "2")
-        self.ally3 = Ally.AllyRobotClass(750, 700, self.grid_ui_obj, "3")
+        self.adv = Adversary.AdversaryRobotClass(650, 0, self.grid_ui_obj, "adv1")
+        self.ally1 = Ally.AllyRobotClass(0, 350, self.grid_ui_obj, "1")
+        self.ally2 = Ally.AllyRobotClass(1300, 350, self.grid_ui_obj, "2")
+        self.ally3 = Ally.AllyRobotClass(650, 700, self.grid_ui_obj, "3")
 
         self.adv.set_opponent_details([self.ally1, self.ally2, self.ally3])
         self.ally1.set_opponent_details(self.adv)
@@ -33,4 +33,3 @@ class GridClass:
 
     def run_ui_loop(self):
         self.grid_ui_obj.run_main_loop()
-

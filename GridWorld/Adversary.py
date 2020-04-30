@@ -16,6 +16,8 @@ class AdversaryRobotClass(Robot.RobotClass):
         self.no_of_move_calls = 0
         self.grid_distribution = [[0 for i in range(self.grid_ui_obj.grid_width/100+1)] for j in range(self.grid_ui_obj.grid_height/100+1)]
         self.avgDistFromCenter = 0
+        self.max_speed = 6
+
 
     def move(self):
         self.no_of_move_calls += 1
@@ -24,7 +26,8 @@ class AdversaryRobotClass(Robot.RobotClass):
         if not self.stop:
             self.update_position()
             self.grid_distribution[int(self.pos_y/100)][int(self.pos_x/100)] += 1
-            self.avgDistFromCenter += self.get_distance_to_object(self.grid_ui_obj.grid_width/2, self.pos_x, self.grid_ui_obj.grid_height/2, self.pos_y)
+            self.avgDistFromCenter += self.get_distance_to_object(self.grid_ui_obj.grid_width/2, self.grid_ui_obj.grid_height/2, self.pos_x, self.pos_y)
+            # print(self.get_distance_to_object(self.grid_ui_obj.grid_width/2, self.grid_ui_obj.grid_height/2, self.pos_x, self.pos_y))
             self.grid_ui_obj.canvas.move(self.rectangle, self.speed_x, self.speed_y)
             self.grid_ui_obj.canvas.move(self.label, self.speed_x, self.speed_y)
             self.is_collided(self.pos_x, self.pos_y, self.size, self.opponent_details)
@@ -33,10 +36,10 @@ class AdversaryRobotClass(Robot.RobotClass):
             self.timer_end = time.time()
             print ("Time taken: " + str(self.timer_end-self.timer_start))
             print ("No of move calls: " + str(self.no_of_move_calls))
-            for i in range(self.grid_ui_obj.grid_height/100+1):
-                for j in range(self.grid_ui_obj.grid_width/100 + 1):
-                    if self.grid_distribution[i][j] > 1:
-                        print ("at pos " + str(i) + " " + str(j) + ": " + str(self.grid_distribution[i][j]))
+            # for i in range(self.grid_ui_obj.grid_height/100+1):
+            #     for j in range(self.grid_ui_obj.grid_width/100 + 1):
+            #         if self.grid_distribution[i][j] > 1:
+            #             print ("at pos " + str(i) + " " + str(j) + ": " + str(self.grid_distribution[i][j]))
             print ("Avg Dist away from center: " + str(self.avgDistFromCenter/self.no_of_move_calls))
 
     def get_best_possible_direction(self):

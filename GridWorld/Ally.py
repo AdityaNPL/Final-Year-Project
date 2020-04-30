@@ -11,6 +11,8 @@ class AllyRobotClass(Robot.RobotClass):
                                                                   fill="blue")
         self.label = self.grid_ui_obj.canvas.create_text((self.pos_x, self.pos_y), text=labeltxt)
         self.force_const = 500000
+        self.acc_mag = 3
+
 
 
     def set_ally_details(self, listOfAlly):

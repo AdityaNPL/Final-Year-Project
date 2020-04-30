@@ -48,7 +48,10 @@ class RobotTester:
         return (count, len(self.selfPos))
 
     def calcAngle(self, selfPoint, refPoint):
-        tanVal = (refPoint[1] - selfPoint[1])/(refPoint[0] - selfPoint[0])
+        denom = (refPoint[0] - selfPoint[0])
+        if (denom == 0):
+            return 90
+        tanVal = (refPoint[1] - selfPoint[1])/denom
         return math.degrees(math.atan(tanVal))
 
     def calcDistanceBetweenPoints(self, selfPoint, refPoint):
@@ -80,6 +83,8 @@ class RobotTester:
         for pos in range(len(valuesOverTime)-1):
             if valuesOverTime[pos][0] + 1 != valuesOverTime[pos+1][0]:
                 time = valuesOverTime[pos][0] - valuesOverTime[startPos][0]
+                if time == 0:
+                    continue
                 changeInAngle = math.radians(abs(valuesOverTime[pos][1] - valuesOverTime[startPos][1]))
                 angularVel = changeInAngle/time
                 distanceBetweenPoints = self.calcDistanceBetweenPoints(self.selfPos[valuesOverTime[pos][0]],self.selfPos[valuesOverTime[startPos][0]])
@@ -115,3 +120,10 @@ class RobotTester:
             if len(listOfTimes) == 0 or currentAngle != listOfTimes[len(listOfTimes)-1][1]:
                 listOfTimes.append((time,currentAngle))
         return listOfTimes
+
+    def avgDistFromCenter(self):
+        dist = 0
+        for pos in self.oppPos:
+            dist += self.calcDistanceBetweenPoints(pos,(650,350))
+            # print(self.calcDistanceBetweenPoints(pos,(650,350)))
+        return (dist * 1.0)/len(self.oppPos)

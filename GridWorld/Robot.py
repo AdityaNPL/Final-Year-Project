@@ -30,7 +30,7 @@ class RobotClass:
             dataSheetWritter.writerow(['Time Stamp', 'pos X', 'pos Y', 'speed X', 'speed Y'])
 
     '''
-    Direction = [0,359] => anti-clockwise angle from horizontal 
+    Direction = [0,359] => anti-clockwise angle from horizontal
     '''
     def change_direction_to(self, direction):
 
