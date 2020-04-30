@@ -9,7 +9,7 @@ MaxSpeed=100
 minDecreasing=1
 MaxDecreasing=100
 
-initialPop = 200
+initialPop = 100
 population = []
 oldPopulation = []
 fitnessVal = 50
@@ -42,7 +42,6 @@ for i in range(initialPop):
     population.append(EAsim.EAsim(genes))
 
 while fitnessVal < 100 and len(population) > 1:
-    oldPopulation = []
     print(len(population), fitnessVal)
     populationHistory.append(len(population))
     if(len(population) < 5):
@@ -76,12 +75,13 @@ while fitnessVal < 100 and len(population) > 1:
 
     if len(newPopulation) >= len(population):
         if fitnessVal >= 60:
-            fitnessVal += 0.25
-        elif fitnessVal >= 55:
             fitnessVal += 0.5
+        elif fitnessVal >= 55 :
+            fitnessVal += 1
         else:
-            fitnessVal += 2
-    oldPopulation = newPopulation
+            fitnessVal += 3
+
+    oldPopulation = population
     population = newPopulation
 
 print(fitnessHistory)
