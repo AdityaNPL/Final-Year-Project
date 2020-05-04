@@ -20,17 +20,18 @@ def getChildren(parents):
     c1 = {"iterations":parents[randint(0, 1)]["iterations"], "maxSpeed":parents[randint(0, 1)]["maxSpeed"], "decreasingVal":parents[randint(0, 1)]["decreasingVal"]}
     c2 = {"iterations":parents[randint(0, 1)]["iterations"], "maxSpeed":parents[randint(0, 1)]["maxSpeed"], "decreasingVal":parents[randint(0, 1)]["decreasingVal"]}
     # Mutate C1 1/10
-    if randint(0,100)%47 == 0 :
+    if randint(0,100)%10 == 0 :
         c1["iterations"] = mutate(c1["iterations"], minIterations,maxIterations)
         c1["maxSpeed"] = mutate(c1["maxSpeed"], minSpeed, MaxSpeed)
         c1["decreasingVal"] = mutate(c1["decreasingVal"], minDecreasing, MaxDecreasing)
-    if randint(0,100)%47 == 0 :
+    if randint(0,100)%10 == 0 :
         c2["iterations"] = mutate(c2["iterations"], minIterations,maxIterations)
         c2["maxSpeed"] = mutate(c2["maxSpeed"], minSpeed, MaxSpeed)
         c2["decreasingVal"] = mutate(c2["decreasingVal"], minDecreasing, MaxDecreasing)
     return c1,c2
+
 def mutate(val, min, max):
-    if randint(0,100)%47 == 0:
+    if randint(0,100)%7 == 0:
         print("mutate")
         return randint(min,max)
     else:
@@ -74,12 +75,13 @@ while fitnessVal < 100 and len(population) > 1:
         newPopulation.append(EAsim.EAsim(child2))
 
     if len(newPopulation) >= len(population):
-        if fitnessVal >= 60:
-            fitnessVal += 0.5
-        elif fitnessVal >= 55 :
-            fitnessVal += 1
-        else:
-            fitnessVal += 3
+        # if fitnessVal >= 60:
+        #     fitnessVal += 0.5
+        # elif fitnessVal >= 55 :
+        #     fitnessVal += 1
+        # else:
+        #     fitnessVal += 3
+        fitnessVal += ((len(newPopulation) * 1.00) / len(population)) * 2
 
     oldPopulation = population
     population = newPopulation

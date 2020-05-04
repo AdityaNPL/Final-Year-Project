@@ -160,3 +160,10 @@ class RobotTester:
             if len(listOfTimes) == 0 or currentAngle != listOfTimes[len(listOfTimes)-1][1]:
                 listOfTimes.append((time,currentAngle))
         return listOfTimes
+
+    def avgDistFromCenter(self):
+        dist = 0
+        for pos in self.oppPos:
+            dist += self.calcDistanceBetweenPoints(pos,(0,0,50))
+            # print(self.calcDistanceBetweenPoints(pos,(650,350)))
+        return (dist * 1.0)/len(self.oppPos)
