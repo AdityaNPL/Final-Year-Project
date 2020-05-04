@@ -113,6 +113,8 @@ class RobotTester:
         for pos in range(len(valuesOverTime)-1):
             if valuesOverTime[pos][0] + 1 != valuesOverTime[pos+1][0]:
                 time = valuesOverTime[pos][0] - valuesOverTime[startPos][0]
+                if time == 0:
+                    continue
                 changeInAngle = math.radians(abs(valuesOverTime[pos][1] - valuesOverTime[startPos][1]))
                 angularVel = changeInAngle/time
                 distanceBetweenPoints = self.calcDistanceBetweenPoints(self.selfPos[valuesOverTime[pos][0]],self.selfPos[valuesOverTime[startPos][0]])

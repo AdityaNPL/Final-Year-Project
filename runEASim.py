@@ -81,7 +81,7 @@ while fitnessVal < 100 and len(population) > 1:
         #     fitnessVal += 1
         # else:
         #     fitnessVal += 3
-        fitnessVal += ((len(newPopulation) * 1.00) / len(population)) * 2
+        fitnessVal += ((len(newPopulation) * 1.00) / len(population))
 
     oldPopulation = population
     population = newPopulation
