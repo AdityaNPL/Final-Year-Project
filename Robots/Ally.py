@@ -57,8 +57,6 @@ class Ally:
                 for data in self.dataToAnalyse:
                     out.write("%s,%s,%s,%s,%s,%s,%s\n"%data)
 
-
-
     def move(self, x, y, z):
         if z<2:
             z = 2
@@ -73,34 +71,6 @@ class Ally:
             subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(0), "__ns:=firefly"+str(self.id)])
         # print(x,y,z)
 
-    def randRs(self):
-        self.r1 = [random.uniform(0,1),random.uniform(0,1),random.uniform(0,1)]
-        self.r2 = [random.uniform(0,1),random.uniform(0,1),random.uniform(0,1)]
-
-    def calA(self):
-        self.A = self.sub(self.mult([2*self.a,2*self.a,2*self.a], self.r1), [self.a,self.a,self.a])
-
-    def calC(self):
-        self.C = [2*self.r2[0],2*self.r2[1],2*self.r2[2]]
-
-    def calD(self):
-        self.D = self.sub(self.mult(self.C, self.prey), self.pos)
-        for i in range(3):
-            if self.D[i] < 0:
-                self.D[i] *= -1
-
-
-    def encircle(self, prey):
-        self.prey = prey
-        self.a = self.decreasingVal - self.decreasingVal*(self.step/self.maxIterations)
-        self.randRs()
-        self.calA()
-        self.calC()
-        self.calcStatus()
-        self.calD()
-        newPos = self.sub(self.prey, self.mult(self.A, self.D))
-        return newPos
-
     def checkCollision(self):
         if self.newPos[2]<10:
             self.newPos[2] = 10
@@ -111,12 +81,6 @@ class Ally:
                 for i in range(3):
                     if allyPos[i] == self.newPos[i]:
                         self.newPos[i] += 1
-
-    def sub(self, a, b):
-        return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]
-
-    def mult(self, a, b):
-        return [a[0] * b[0], a[1] * b[1], a[2] * b[2]]
 
     def calcWaypoints(self):
         self.calcStatus()
