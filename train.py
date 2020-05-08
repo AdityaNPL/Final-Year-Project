@@ -1,6 +1,6 @@
+from Environment import Empty
 import matplotlib.pyplot as plt
 from Model import CommNet
-from Environment import Empty
 import numpy as np
 import tensorflow as tf
 import random
