@@ -1,5 +1,5 @@
 from random import randint
-from Robots import Ally,Adversary
+from Robots import Ally, Adversary
 
 class EmptyWorld:
     def __init__(self):
