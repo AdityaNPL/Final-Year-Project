@@ -8,10 +8,10 @@ import csv
 
 class Adversary():
 
-    def __init__(self, id, maxIterations, maxSpeed, realSim):
+    def __init__(self, id, realSim):
         self.id = id
         self.step = 0
-        self.maxSpeed = maxSpeed
+        self.maxSpeed = 5
         self.pos = [0,0,0]
         self.history = {}
         self.allies = []

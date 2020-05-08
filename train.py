@@ -1,4 +1,9 @@
 import matplotlib.pyplot as plt
+from Model import CommNet
+from Environment import Empty
+import numpy as np
+import tensorflow as tf
+import random
 
 def train(sess, env, actor, critic):
     sess.run(tf.compat.v1.global_variables_initializer())
@@ -52,9 +57,9 @@ def train(sess, env, actor, critic):
 
 episodes = 200
 hiddenValueLengths = 10
-numOfAgents = 10
-observationLength = 150
-numOfActions = 15
+numOfAgents = 3
+observationLength = 6
+numOfActions = 27
 
 learningRate = 0.001
 tau = 0.2
@@ -67,16 +72,15 @@ tf.compat.v1.reset_default_graph()
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 with tf.compat.v1.Session(config=config) as sess:
-    env = wrap_env(Combat(grid_shape=(20, 20), n_agents=10, n_opponents=10))
+    env = Empty.EmptyWorld()
 
     action_dim = (numOfAgents, numOfActions)
 
-    actor = ActorNetwork(sess, action_dim, learningRate, tau)
+    actor = CommNet.ActorNetwork(sess, action_dim, learningRate, tau)
 
-    critic = CriticNetwork(sess, learningRate, tau, gamma, actor.get_num_trainable_vars())
+    critic = CommNet.CriticNetwork(sess, learningRate, tau, gamma, actor.get_num_trainable_vars())
 
     labels, episodeRewards = train(sess, env, actor, critic)
-    view(sess,env, actor)
 
 """#### Plot the Learning Curve"""
 

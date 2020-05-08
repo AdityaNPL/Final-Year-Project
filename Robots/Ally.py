@@ -5,19 +5,11 @@ import random
 import csv
 
 class Ally:
-    def __init__(self, id, maxIterations, maxSpeed, decreasingVal, realSim):
+    def __init__(self, id, realSim):
          self.id = id
          self.step = 0
-         self.maxIterations = maxIterations
-         self.maxSpeed = maxSpeed
-         self.decreasingVal = decreasingVal
+         self.maxSpeed = 5
          self.prey = [0,0,0]
-         self.r1 = [0,0,0]
-         self.r2 = [0,0,0]
-         self.A = [0,0,0]
-         self.C = [0,0,0]
-         self.D = [0,0,0]
-         self.a = [2,2,2]
          self.pos = [0,0,0]
          self.history = {}
          self.allies = []
@@ -82,14 +74,10 @@ class Ally:
                     if allyPos[i] == self.newPos[i]:
                         self.newPos[i] += 1
 
-    def calcWaypoints(self):
+    def calcWaypoints(self, direction):
         self.calcStatus()
-        self.step += 1
-        self.newPos = self.encircle(self.adv.pos)
         for i in range(3):
-            diff = self.newPos[i] - self.pos[i]
-            if abs(diff) > self.maxSpeed:
-                self.newPos[i] = self.pos[i] + ((diff/diff) * self.maxSpeed)
+            self.newPos[i] = self.pos[i] + (direction[i] * self.maxSpeed)
         self.checkCollision()
 
     def runMove(self):
