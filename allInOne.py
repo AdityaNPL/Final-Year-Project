@@ -425,6 +425,7 @@ class CriticNetwork(object):
 class EmptyWorld:
     def __init__(self):
         self.n_agents = 3
+        self.obs = []
         self.allies = []
         self.adv = Adversary(4, False)
         self.stepNum = 0
@@ -450,13 +451,26 @@ class EmptyWorld:
         for ally in self.allies:
             ally.calcStatus()
             observations.append((ally.pos[0],ally.pos[1],ally.pos[2],advPos[0],advPos[1],advPos[2]))
+        self.obs = observations
         return observations
 
-    def getRewards(self):
+    def getRewards(self, oldObs, newObs, actions):
         rewards = []
-        for ally in self.allies:
-            rewards.append(randint(-10, 10))
+        advCenterOldDist = self.calcDistanceBetweenPoints([0,0,50],[oldObs[i][3], oldObs[i][4], oldObs[i][5]])
+        advCenterNewDist = self.calcDistanceBetweenPoints([0,0,50],[newObs[i][3], newObs[i][4], newObs[i][5]])
+        globalReward = advCenterOldDist - advCenterNewDist
+        for i in range(self.n_agents):
+            oldDist = self.calcDistanceBetweenPoints([oldObs[i][0], oldObs[i][1], oldObs[i][2]],[oldObs[i][3], oldObs[i][4], oldObs[i][5]])
+            newDist = self.calcDistanceBetweenPoints([newObs[i][0], newObs[i][1], newObs[i][2]],[newObs[i][3], newObs[i][4], newObs[i][5]])
+            reward = oldDist - newDist
+            rewards.append(0.7*reward + 0.3*globalReward)
         return rewards
+
+    def calcDistanceBetweenPoints(self, selfPoint, refPoint):
+        ans = 0
+        for i in range(len(selfPoint)):
+            ans += (selfPoint[i]-refPoint[i])**2
+        return math.sqrt(ans)
 
     def getIsDone(self):
         if self.stepNum >= self.maxIterations:
@@ -479,7 +493,9 @@ class EmptyWorld:
         self.runAllies(actions)
         self.runAdv()
         self.stepNum +=1
-        return (self.getObservations(), self.getRewards(), self.getIsDone())
+        oldObs = self.obs
+        newObs = self.getObservations()
+        return (newObs, self.getRewards(oldObs, newObs, actions), self.getIsDone())
 
     def runAllies(self, actions):
         i = 0
