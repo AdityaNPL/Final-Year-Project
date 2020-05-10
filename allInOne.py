@@ -438,6 +438,7 @@ class EmptyWorld:
 
         self.adv.setup()
         self.adv.setAllies(self.allies)
+        print("Environment Set up")
 
     def reset(self):
         return self.getObservations()
@@ -547,7 +548,7 @@ class EmptyWorld:
         if action == 26:
             return [-1,1,-1]
 
-def train(sess, env, actor, critic):
+def train(sess, environ, actor, critic):
     sess.run(tf.compat.v1.global_variables_initializer())
 
     actor.update_target_network()
@@ -558,18 +559,18 @@ def train(sess, env, actor, critic):
 
     for i in range(episodes):
         print(str(i+1) + " / " + str(episodes) )
-        state = env.reset()
+        state = environ.reset()
 
         ep_reward = 0
 
-        done = [False for _ in range(env.n_agents)]
+        done = [False for _ in range(environ.n_agents)]
 
         while not all(done):
             actionDistribution = actor.predict([state])[0]
             actionForEnv = [np.argmax(x) for x in actionDistribution]
             print (actionForEnv)
-            print(env.step(actionForEnv))
-            newState, reward, done = env.step(actionForEnv)
+            print(environ.step(actionForEnv))
+            newState, reward, done = environ.step(actionForEnv)
             reward = np.sum(reward)
 
             stateTrain = [state]
@@ -615,7 +616,7 @@ tf.compat.v1.reset_default_graph()
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 with tf.compat.v1.Session(config=config) as sess:
-    env = EmptyWorld()
+    environ = EmptyWorld()
 
     action_dim = (numOfAgents, numOfActions)
 
@@ -623,7 +624,7 @@ with tf.compat.v1.Session(config=config) as sess:
 
     critic = CriticNetwork(sess, learningRate, tau, gamma, actor.get_num_trainable_vars())
 
-    labels, episodeRewards = train(sess, env, actor, critic)
+    labels, episodeRewards = train(sess, environ, actor, critic)
 
 """#### Plot the Learning Curve"""
 
