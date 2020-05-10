@@ -563,9 +563,9 @@ def train(sess, env, actor, critic):
 
         ep_reward = 0
 
-        done = [False for _ in range(env.n_agents)]
+        done = False
 
-        while not all(done):
+        while not done:
             actionDistribution = actor.predict([state])[0]
             actionForEnv = [np.argmax(x) for x in actionDistribution]
 
