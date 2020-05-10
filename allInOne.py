@@ -662,7 +662,7 @@ with tf.compat.v1.Session(config=config) as sess:
 
     labels, episodeRewards = train(sess, env, actor, critic)
 
-    simulate(sess, env, actor, critic)
+    simulate(sess, actor, critic)
 
 """#### Plot the Learning Curve"""
 
