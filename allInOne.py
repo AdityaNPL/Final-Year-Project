@@ -568,7 +568,7 @@ def train(sess, env, actor, critic):
             actionDistribution = actor.predict([state])[0]
             actionForEnv = [np.argmax(x) for x in actionDistribution]
 
-            newState, reward, done, info = env.step(actionForEnv)
+            newState, reward, done = env.step(actionForEnv)
             reward = np.sum(reward)
 
             stateTrain = [state]
