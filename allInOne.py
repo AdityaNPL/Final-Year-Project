@@ -423,8 +423,7 @@ class CriticNetwork(object):
 
 
 class EmptyWorld:
-    def __init__(self, printToFile):
-        self.printToFile = printToFile
+    def __init__(self):
         self.n_agents = 3
         self.obs = []
         self.allies = []
@@ -571,7 +570,7 @@ class EmptyWorld:
             return [-1,1,-1]
 
 def simulate(sess, actor, critic):
-    env = EmptyWorld(True)
+    env = EmptyWorld()
     sess.run(tf.compat.v1.global_variables_initializer())
 
     state = env.reset()
@@ -652,7 +651,7 @@ tf.compat.v1.reset_default_graph()
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 with tf.compat.v1.Session(config=config) as sess:
-    env = EmptyWorld(False)
+    env = EmptyWorld()
 
     action_dim = (numOfAgents, numOfActions)
 
