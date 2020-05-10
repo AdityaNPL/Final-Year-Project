@@ -182,6 +182,7 @@ class Ally:
 
     def calcWaypoints(self, direction):
         self.calcStatus()
+        self.step += 1
         for i in range(3):
             self.newPos[i] = self.pos[i] + (direction[i] * self.maxSpeed)
         self.checkCollision()
@@ -429,7 +430,7 @@ class EmptyWorld:
         self.allies = []
         self.adv = Adversary(4, False)
         self.stepNum = 0
-        self.maxIterations = 100
+        self.maxIterations = 500
         for i in range(3):
             self.allies.append(Ally(i+1, False))
 
@@ -634,7 +635,7 @@ def train(sess, env, actor, critic):
 
 
 
-episodes = 200
+episodes = 1000
 hiddenValueLengths = 3
 numOfAgents = 3
 observationLength = 6
