@@ -2,7 +2,6 @@ import math
 import time
 import sys
 import subprocess
-import getStatus as gs
 import random
 import csv
 import matplotlib.pyplot as plt
