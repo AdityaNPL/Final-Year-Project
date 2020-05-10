@@ -456,8 +456,8 @@ class EmptyWorld:
 
     def getRewards(self, oldObs, newObs, actions):
         rewards = []
-        advCenterOldDist = self.calcDistanceBetweenPoints([0,0,50],[oldObs[i][3], oldObs[i][4], oldObs[i][5]])
-        advCenterNewDist = self.calcDistanceBetweenPoints([0,0,50],[newObs[i][3], newObs[i][4], newObs[i][5]])
+        advCenterOldDist = self.calcDistanceBetweenPoints([0,0,50],[oldObs[0][3], oldObs[0][4], oldObs[0][5]])
+        advCenterNewDist = self.calcDistanceBetweenPoints([0,0,50],[newObs[0][3], newObs[0][4], newObs[0][5]])
         globalReward = advCenterOldDist - advCenterNewDist
         for i in range(self.n_agents):
             oldDist = self.calcDistanceBetweenPoints([oldObs[i][0], oldObs[i][1], oldObs[i][2]],[oldObs[i][3], oldObs[i][4], oldObs[i][5]])
