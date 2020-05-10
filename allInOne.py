@@ -245,7 +245,8 @@ class CommunicationNetwork:
             for j in range(numOfAgents):
                 h = H[:, j]
                 c = C[:, j]
-
+                print(h)
+                print(c)
                 next_h = CommunicationNetwork.module(h, c)
                 next_H = tf.concat([next_H, tf.reshape(next_h, (batch_size, 1, hiddenValueLengths))], 1)
 
