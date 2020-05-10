@@ -617,9 +617,9 @@ with tf.compat.v1.Session(config=config) as sess:
 
     action_dim = (numOfAgents, numOfActions)
 
-    actor = CommNet.ActorNetwork(sess, action_dim, learningRate, tau)
+    actor = ActorNetwork(sess, action_dim, learningRate, tau)
 
-    critic = CommNet.CriticNetwork(sess, learningRate, tau, gamma, actor.get_num_trainable_vars())
+    critic = CriticNetwork(sess, learningRate, tau, gamma, actor.get_num_trainable_vars())
 
     labels, episodeRewards = train(sess, env, actor, critic)
 
