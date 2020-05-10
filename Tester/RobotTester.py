@@ -47,6 +47,7 @@ class RobotTester:
 
     def countLineOfSight(self):
         count = 0
+        print(len(self.selfPos))
         for time in range(len(self.selfPos)):
             thetaX = self.calcAngleX(self.selfPos[time], self.oppPos[time])
             phiX = self.calcAngleX(self.selfSpeed[time], (0,0,0)) # angle to horizontal based on speed vectors for direction
