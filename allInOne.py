@@ -424,11 +424,11 @@ class EmptyWorld:
     def __init__(self):
         self.n_agents = 3
         self.allies = []
-        self.adv = Adversary.Adversary(4, False)
+        self.adv = Adversary(4, False)
         self.step = 0
         self.maxIterations = 100
         for i in range(3):
-            self.allies.append(Ally.Ally(i+1, False))
+            self.allies.append(Ally(i+1, False))
 
         for ally in self.allies:
             ally.setup()
@@ -613,7 +613,7 @@ tf.compat.v1.reset_default_graph()
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 with tf.compat.v1.Session(config=config) as sess:
-    env = Empty.EmptyWorld()
+    env = EmptyWorld()
 
     action_dim = (numOfAgents, numOfActions)
 
