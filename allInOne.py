@@ -620,9 +620,9 @@ numOfAgents = 3
 observationLength = 6
 numOfActions = 27
 
-learningRate = 0.001
-tau = 0.2
-gamma = 0.8
+learningRate = 0.1
+tau = 0.1
+gamma = 0.99
 
 labels = []
 episodeRewards = []
