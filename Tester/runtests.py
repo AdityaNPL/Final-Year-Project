@@ -42,34 +42,34 @@ for i in range(1,robots+1):
     print(res5[len(res5)-1])
     acc += res5[len(res5)-1][1]
 
-    if i == 1:
-        labelsAngle = []
-        valAngle = []
-        for val in res3:
-            labelsAngle.append(val[0])
-            valAngle.append(val[1])
-
-        fig = plt.figure(figsize=(14, 7))
-        axAngle = fig.add_subplot(121)
-        axAngle.plot(labelsAngle,valAngle)
-        axAngle.set_title("Rate of Change of Angle (running average)")
-        axAngle.set_ylabel("Avg Rate of Change of Angle")
-        axAngle.set_xlabel("Timestamp")
-
-        labelsW = []
-        valW = []
-        for val in res5:
-            labelsW.append(val[0])
-            valW.append(val[1])
-
-        axW = fig.add_subplot(122)
-        axW.plot(labelsW,valW)
-        axW.set_title("Angular Acceleration (running average)")
-        axW.set_ylabel("Avg Angular Acc")
-        axW.set_xlabel("Turn Number")
-        plt.tight_layout()
-        plt.show()
-        # print(res6)
+    # if i == 1:
+    #     labelsAngle = []
+    #     valAngle = []
+    #     for val in res3:
+    #         labelsAngle.append(val[0])
+    #         valAngle.append(val[1])
+    #
+    #     fig = plt.figure(figsize=(14, 7))
+    #     axAngle = fig.add_subplot(121)
+    #     axAngle.plot(labelsAngle,valAngle)
+    #     axAngle.set_title("Rate of Change of Angle (running average)")
+    #     axAngle.set_ylabel("Avg Rate of Change of Angle")
+    #     axAngle.set_xlabel("Timestamp")
+    #
+    #     labelsW = []
+    #     valW = []
+    #     for val in res5:
+    #         labelsW.append(val[0])
+    #         valW.append(val[1])
+    #
+    #     axW = fig.add_subplot(122)
+    #     axW.plot(labelsW,valW)
+    #     axW.set_title("Angular Acceleration (running average)")
+    #     axW.set_ylabel("Avg Angular Acc")
+    #     axW.set_xlabel("Turn Number")
+    #     plt.tight_layout()
+    #     plt.show()
+    #     # print(res6)
 
 print("######Final#######")
 print(los/robots)
