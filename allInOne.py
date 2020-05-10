@@ -640,13 +640,17 @@ for i in labels:
         avgLabelsCommNet.append(i)
         avgVal = 0
 
-figCommNet = plt.figure(figsize=(6, 5))
-axCommNet = figCommNet.add_subplot(111)
+# figCommNet = plt.figure(figsize=(6, 5))
+# axCommNet = figCommNet.add_subplot(111)
 
-axCommNet.plot(avgLabelsCommNet, avgEpRewardCommNet)
-
-axCommNet.set_title("Learning Curve")
-axCommNet.set_ylabel("Episodic Reward")
-axCommNet.set_xlabel("Episodes")
-plt.tight_layout()
-plt.show()
+print("Labels")
+print(avgLabelsCommNet)
+print("Rewards")
+print(avgEpRewardCommNet)
+# axCommNet.plot(avgLabelsCommNet, avgEpRewardCommNet)
+#
+# axCommNet.set_title("Learning Curve")
+# axCommNet.set_ylabel("Episodic Reward")
+# axCommNet.set_xlabel("Episodes")
+# plt.tight_layout()
+# plt.show()
