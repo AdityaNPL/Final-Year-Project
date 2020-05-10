@@ -644,9 +644,9 @@ with tf.compat.v1.Session(config=config) as sess:
 """#### Plot the Learning Curve"""
 
 print("Labels")
-print(avgLabelsCommNet)
+print(labels)
 print("Rewards")
-print(avgEpRewardCommNet)
+print(episodeRewards)
 
 avgEpRewardCommNet = []
 avgLabelsCommNet = []
