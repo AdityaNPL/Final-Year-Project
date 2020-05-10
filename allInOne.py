@@ -643,8 +643,11 @@ with tf.compat.v1.Session(config=config) as sess:
 
 """#### Plot the Learning Curve"""
 
-# print(labels)
-# print(episodeRewards)
+print("Labels")
+print(avgLabelsCommNet)
+print("Rewards")
+print(avgEpRewardCommNet)
+
 avgEpRewardCommNet = []
 avgLabelsCommNet = []
 avgVal = 0
@@ -658,11 +661,11 @@ for i in labels:
 
 # figCommNet = plt.figure(figsize=(6, 5))
 # axCommNet = figCommNet.add_subplot(111)
-
-print("Labels")
-print(avgLabelsCommNet)
-print("Rewards")
-print(avgEpRewardCommNet)
+#
+# print("Labels")
+# print(avgLabelsCommNet)
+# print("Rewards")
+# print(avgEpRewardCommNet)
 # axCommNet.plot(avgLabelsCommNet, avgEpRewardCommNet)
 #
 # axCommNet.set_title("Learning Curve")
