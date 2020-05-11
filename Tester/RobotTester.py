@@ -121,7 +121,10 @@ class RobotTester:
                 distanceBetweenPoints = self.calcDistanceBetweenPoints(self.selfPos[valuesOverTime[pos][0]],self.selfPos[valuesOverTime[startPos][0]])
                 if changeInAngle != 0:
                     radiusOfTurn = (distanceBetweenPoints/2)/(math.sin(changeInAngle/2))
-                    angularAcc = angularVel / radiusOfTurn
+                    angularAcc = 0
+                    if radiusOfTurn != 0:
+                        angularAcc = angularVel / radiusOfTurn
+                          
                     accForEachTurn.append(angularAcc)
                 else:
                     accForEachTurn.append(0)

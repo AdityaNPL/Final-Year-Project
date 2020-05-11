@@ -76,6 +76,7 @@ class Ally:
 
     def calcWaypoints(self, direction):
         self.calcStatus()
+        self.step += 1
         for i in range(3):
             self.newPos[i] = self.pos[i] + (direction[i] * self.maxSpeed)
         self.checkCollision()

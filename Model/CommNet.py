@@ -1,3 +1,9 @@
+import tensorflow as tf
+
+hiddenValueLengths = 3
+numOfAgents = 3
+observationLength = 6
+numOfActions = 27
 
 class CommunicationNetwork:
     @staticmethod
@@ -55,7 +61,8 @@ class CommunicationNetwork:
             for j in range(numOfAgents):
                 h = H[:, j]
                 c = C[:, j]
-
+                # print(h)
+                # print(c)
                 next_h = CommunicationNetwork.module(h, c)
                 next_H = tf.concat([next_H, tf.reshape(next_h, (batch_size, 1, hiddenValueLengths))], 1)
 
@@ -110,6 +117,7 @@ class CommunicationNetwork:
             tf.compat.v1.summary.histogram("w_baseline", tf.compat.v1.get_variable("dense/kernel"))
 
             return baseline
+
 
 class ActorNetwork(object):
 

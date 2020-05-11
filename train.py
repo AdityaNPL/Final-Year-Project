@@ -1,9 +1,34 @@
-from Environment import Empty
+import math
+import time
+import sys
+import subprocess
+import random
+from random import randint
+import csv
 import matplotlib.pyplot as plt
-from Model import CommNet
 import numpy as np
 import tensorflow as tf
-import random
+from Model import CommNet
+from Robots import Adversary, Ally
+from Environment import Empty
+
+
+def simulate(sess, actor):
+    env = Empty.EmptyWorld(False)
+    sess.run(tf.compat.v1.global_variables_initializer())
+
+    state = env.reset()
+    done = False
+    counter = 0 
+    while not done:
+        counter += 1
+        print(counter)
+        actionDistribution = actor.predict([state])[0]
+        actionForEnv = [np.argmax(x) for x in actionDistribution]
+
+        newState, reward, done = env.step(actionForEnv)
+        state = newState
+    env.printToFile(True)
 
 def train(sess, env, actor, critic):
     sess.run(tf.compat.v1.global_variables_initializer())
@@ -15,18 +40,21 @@ def train(sess, env, actor, critic):
     labelsCommNet = []
 
     for i in range(episodes):
-        print(str(i+1) + " / " + str(episodes) )
+        percentage = (i*100.00)/episodes 
+        if percentage % 10 == 0: 
+            print(str(percentage) + "%")
+        
         state = env.reset()
 
         ep_reward = 0
 
-        done = [False for _ in range(env.n_agents)]
+        done = False
 
-        while not all(done):
+        while not done:
             actionDistribution = actor.predict([state])[0]
             actionForEnv = [np.argmax(x) for x in actionDistribution]
 
-            newState, reward, done, info = env.step(actionForEnv)
+            newState, reward, done = env.step(actionForEnv)
             reward = np.sum(reward)
 
             stateTrain = [state]
@@ -53,17 +81,37 @@ def train(sess, env, actor, critic):
 
     return (labelsCommNet,epRewardHistoryCommNet)
 
+def printTrainingCurve(labels, episodeRewards):
+    avgEpRewardCommNet = []
+    avgLabelsCommNet = []
+    avgVal = 0
+    step = 10
+    for i in labels:
+        if i == 1:
+            continue
+        avgVal += episodeRewards[i-1]
+        if i % step == 0:
+            avgEpRewardCommNet.append(avgVal/step)
+            avgLabelsCommNet.append(i)
+            avgVal = 0
+
+    figCommNet = plt.figure(figsize=(6, 5))
+    axCommNet = figCommNet.add_subplot(111)
+    axCommNet.plot(avgLabelsCommNet, avgEpRewardCommNet)
+    axCommNet.set_title("Learning Curve")
+    axCommNet.set_ylabel("Episodic Reward")
+    axCommNet.set_xlabel("Episodes")
+    plt.tight_layout()
+    plt.show()
 
 
-episodes = 200
-hiddenValueLengths = 10
-numOfAgents = 3
-observationLength = 6
-numOfActions = 27
-
+episodes = 1000
 learningRate = 0.001
-tau = 0.2
-gamma = 0.8
+tau = 0.5
+gamma = 0.9
+
+numOfAgents = 3
+numOfActions = 27
 
 labels = []
 episodeRewards = []
@@ -72,7 +120,7 @@ tf.compat.v1.reset_default_graph()
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 with tf.compat.v1.Session(config=config) as sess:
-    env = Empty.EmptyWorld()
+    env = Empty.EmptyWorld(False)
 
     action_dim = (numOfAgents, numOfActions)
 
@@ -82,28 +130,6 @@ with tf.compat.v1.Session(config=config) as sess:
 
     labels, episodeRewards = train(sess, env, actor, critic)
 
-"""#### Plot the Learning Curve"""
+    printTrainingCurve(labels, episodeRewards)
 
-# print(labels)
-# print(episodeRewards)
-avgEpRewardCommNet = []
-avgLabelsCommNet = []
-avgVal = 0
-step = 10
-for i in labels:
-    avgVal += episodeRewards[i-1]
-    if i % step == 0:
-        avgEpRewardCommNet.append(avgVal/step)
-        avgLabelsCommNet.append(i)
-        avgVal = 0
-
-figCommNet = plt.figure(figsize=(6, 5))
-axCommNet = figCommNet.add_subplot(111)
-
-axCommNet.plot(avgLabelsCommNet, avgEpRewardCommNet)
-
-axCommNet.set_title("Learning Curve")
-axCommNet.set_ylabel("Episodic Reward")
-axCommNet.set_xlabel("Episodes")
-plt.tight_layout()
-plt.show()
+    simulate(sess, actor)
