@@ -1,5 +1,6 @@
 import math
 import Robot
+import numpy as np
 
 
 class AllyRobotClass(Robot.RobotClass):
@@ -12,6 +13,7 @@ class AllyRobotClass(Robot.RobotClass):
         self.label = self.grid_ui_obj.canvas.create_text((self.pos_x, self.pos_y), text=labeltxt)
         self.force_const = 500000
         self.acc_mag = 3
+        # self.max_speed = 6
 
 
 
@@ -29,9 +31,13 @@ class AllyRobotClass(Robot.RobotClass):
             self.grid_ui_obj.canvas.move(self.label, self.speed_x, self.speed_y)
             self.grid_ui_obj.canvas.after(self.step_delay_rate, self.move)
 
+    def getErroredPostion(self, pos_x, pos_y):
+        distanceToOject = self.get_distance_to_object(self.pos_x, self.pos_y, pos_x, pos_y)
+        errorValue = (np.random.normal(distanceToOject, distanceToOject/10, 1)[0]) - distanceToOject
+        return (pos_x + errorValue, pos_y + errorValue)
+
     def get_best_dir(self):
-        opponent_x = self.opponent_details.pos_x
-        opponent_y = self.opponent_details.pos_y
+        opponent_x, opponent_y = self.getErroredPostion(self.opponent_details.pos_x, self.opponent_details.pos_y)
         direction = self.get_direction_to_object(self.pos_x, self.pos_y, opponent_x, opponent_y)
         direction = math.radians(direction)
 
