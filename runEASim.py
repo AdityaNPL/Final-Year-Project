@@ -19,7 +19,7 @@ populationHistory = []
 def getChildren(parents):
     c1 = {"iterations":parents[randint(0, 1)]["iterations"], "maxSpeed":parents[randint(0, 1)]["maxSpeed"], "decreasingVal":parents[randint(0, 1)]["decreasingVal"]}
     c2 = {"iterations":parents[randint(0, 1)]["iterations"], "maxSpeed":parents[randint(0, 1)]["maxSpeed"], "decreasingVal":parents[randint(0, 1)]["decreasingVal"]}
-    # Mutate C1 1/10
+    # Mutate 10%
     if randint(0,100)%10 == 0 :
         c1["iterations"] = mutate(c1["iterations"], minIterations,maxIterations)
         c1["maxSpeed"] = mutate(c1["maxSpeed"], minSpeed, MaxSpeed)
@@ -31,6 +31,7 @@ def getChildren(parents):
     return c1,c2
 
 def mutate(val, min, max):
+    # Mutate 15%
     if randint(0,100)%7 == 0:
         print("mutate")
         return randint(min,max)

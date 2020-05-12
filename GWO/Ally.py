@@ -3,6 +3,8 @@ import subprocess
 import getStatus as gs
 import random
 import csv
+import numpy as np
+import math
 
 class Ally:
     def __init__(self, id, maxIterations, maxSpeed, decreasingVal, realSim):
@@ -118,10 +120,21 @@ class Ally:
     def mult(self, a, b):
         return [a[0] * b[0], a[1] * b[1], a[2] * b[2]]
 
+    def getErroredPostion(self, pos):
+        distanceToOject = self.calcDistanceBetweenPoints(self.pos, pos)
+        errorValue = (np.random.normal(distanceToOject, distanceToOject/10, 1)[0]) - distanceToOject
+        return [pos[0] + errorValue, pos[1] + errorValue, pos[2] + errorValue]
+
+    def calcDistanceBetweenPoints(self, selfPoint, refPoint):
+        ans = 0
+        for i in range(len(selfPoint)):
+            ans += (selfPoint[i]-refPoint[i])**2
+        return math.sqrt(ans)
+
     def calcWaypoints(self):
         self.calcStatus()
         self.step += 1
-        self.newPos = self.encircle(self.adv.pos)
+        self.newPos = self.encircle(self.getErroredPostion(self.adv.pos))
         for i in range(3):
             diff = self.newPos[i] - self.pos[i]
             if abs(diff) > self.maxSpeed:

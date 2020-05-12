@@ -1,6 +1,7 @@
 from GWO import Ally
 from GWO import Adversary
 from Tester import RobotTester as rt
+import math
 class EAsim:
 	def __init__(self, genes):
 		self.robotNum = 4
@@ -58,7 +59,7 @@ class EAsim:
 		finalTime = 0
 		finalLineOfSight = 0
 		finalBlastRange = 0
-		finalRateOfChange = 0
+		finalAverageChange = 0
 
 		robot = self.robots[self.robotNum-1]
 		data = robot.dataToAnalyse
@@ -69,7 +70,8 @@ class EAsim:
 			oppPos.append((float(row[1]), float(row[2]), float(row[3])))
 			oppSpeed.append((float(row[4]), float(row[5]), float(row[6])))
 		test = rt.RobotTester([oppPos,oppSpeed], [oppPos,oppSpeed])
-		advRateOfChange = abs(test.rateOfChangeOfAngleOfSelf()[-1][1])/360.0
+		changesInAngles = test.changeOfAngleOfSelf()
+		avgChangeInAngle_adv = abs(math.degrees(sum(changesInAngles)/len(changesInAngles)))/360.0
 		finalTime = test.timeTakenToCapture()
 		finalTimeFactor = 1 - finalTime /self.maxIterations
 		for i in range(self.robotNum - 1):
@@ -87,17 +89,18 @@ class EAsim:
 			finalLineOfSight += (lineOfSight[0]*1.0/lineOfSight[1])
 			blastRange = test.countBlastRange()
 			finalBlastRange += (blastRange[0]*1.0/blastRange[1])
-			finalRateOfChange += abs(test.rateOfChangeOfAngleOfSelf()[-1][1]) / 360.0
+			changesInAngles = test.changeOfAngleOfSelf()
+			finalAverageChange += abs(math.degrees(sum(changesInAngles)/len(changesInAngles)))/360.0
 
 		finalLineOfSight = finalLineOfSight / (self.robotNum - 1)
 		finalBlastRange = finalBlastRange / (self.robotNum - 1)
-		finalRateOfChange = 1 - (finalRateOfChange / (self.robotNum - 1))
+		finalAverageChange = 1 - (finalAverageChange / (self.robotNum - 1))
 
 		if finalTimeFactor > 0:
 			print("Finished Early")
 			print(finalTime, finalTimeFactor)
 
-		fitnessVal = 5*finalTimeFactor + 19*finalLineOfSight + 19*finalBlastRange + 19*finalRateOfChange + 19*avgDistFromCenter + 19*advRateOfChange
-		# print(finalTime,  finalLineOfSight, finalBlastRange, finalRateOfChange, avgDistFromCenter, advRateOfChange)
+		fitnessVal = 5*finalTimeFactor + 19*finalLineOfSight + 19*finalBlastRange + 19*finalAverageChange + 19*avgDistFromCenter + 19*avgChangeInAngle_adv
+		# print(finalTime,  finalLineOfSight, finalBlastRange, finalAverageChange, avgDistFromCenter, avgChangeInAngle_adv)
 		# print(fitnessVal)
 		return fitnessVal
