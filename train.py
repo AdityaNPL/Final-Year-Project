@@ -85,7 +85,7 @@ def printTrainingCurve(labels, episodeRewards):
     avgEpRewardCommNet = []
     avgLabelsCommNet = []
     avgVal = 0
-    step = 10
+    step = 3
     for i in labels:
         if i == 1:
             continue
@@ -106,9 +106,9 @@ def printTrainingCurve(labels, episodeRewards):
 
 
 episodes = 1000
-learningRate = 0.001
-tau = 0.5
-gamma = 0.9
+learningRate = 0.4
+tau = 1
+gamma = 0.7
 
 numOfAgents = 3
 numOfActions = 27
