@@ -127,12 +127,14 @@ class RobotTester:
 
     def anglesWithTime(self):
         listOfAngles = []
+        # print(self.selfSpeed)
         for time in range(len(self.selfSpeed)):
             currentAngleX = self.calcAngleX(self.selfSpeed[time], (0,0,0))
             currentAngleY = self.calcAngleY(self.selfSpeed[time], (0,0,0))
             currentAngleZ = self.calcAngleZ(self.selfSpeed[time], (0,0,0))
             currentAngle = (currentAngleX + currentAngleY + currentAngleZ) / 3
             listOfAngles.append((time,currentAngle))
+        # print(listOfAngles)
         return listOfAngles
 
     def avgDistFromCenter(self):

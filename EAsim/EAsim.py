@@ -7,6 +7,7 @@ class EAsim:
 		self.robotNum = 4
 		self.robots = []
 		self.allies = []
+		self.boundary = 1500
 		self.genes = genes # iterations, maxSpeed, decreasingVal
 		self.maxIterations = self.genes["iterations"]
 		self.maxSpeed = self.genes["maxSpeed"]
@@ -42,8 +43,18 @@ class EAsim:
 				if self.checkEqualPos(positions[i], positions[len(positions)-1]):
 					done = True
 					break
-			if done:
+			if done or self.isOutOfBounds(positions[len(positions)-1]):
 				break
+
+	def isOutOfBounds(self, pos):
+		dist = 0
+		refPoint = [0,0,50]
+		for i in range(len(pos)):
+			dist += (pos[i]-refPoint[i])**2
+		dist = math.sqrt(dist)
+		if dist > self.boundary:
+			return True
+		return False
 
 	def printToFile(self, write):
 		for i in range(self.robotNum):
@@ -63,7 +74,7 @@ class EAsim:
 
 		robot = self.robots[self.robotNum-1]
 		data = robot.dataToAnalyse
-		avgDistFromCenter = min((robot.avgDistFromCenter / len(data)) / 10000, 1)
+		avgDistFromCenter = (robot.avgDistFromCenter / len(data)) / self.boundary
 		oppPos = []
 		oppSpeed = []
 		for row in data:
@@ -73,7 +84,7 @@ class EAsim:
 		changesInAngles = test.changeOfAngleOfSelf()
 		avgChangeInAngle_adv = abs(math.degrees(sum(changesInAngles)/len(changesInAngles)))/360.0
 		finalTime = test.timeTakenToCapture()
-		finalTimeFactor = 1 - finalTime /self.maxIterations
+		finalTimeFactor = 1.00 - (finalTime*1.00 /self.maxIterations)
 		for i in range(self.robotNum - 1):
 			robot = self.robots[i]
 			data = robot.dataToAnalyse
@@ -96,11 +107,9 @@ class EAsim:
 		finalBlastRange = finalBlastRange / (self.robotNum - 1)
 		finalAverageChange = 1 - (finalAverageChange / (self.robotNum - 1))
 
-		if finalTimeFactor > 0:
-			print("Finished Early")
-			print(finalTime, finalTimeFactor)
+		# if finalTimeFactor > 0:
+		# 	print("Finished Early")
+		# 	print(finalTime, finalTimeFactor)
 
-		fitnessVal = 5*finalTimeFactor + 19*finalLineOfSight + 19*finalBlastRange + 19*finalAverageChange + 19*avgDistFromCenter + 19*avgChangeInAngle_adv
-		# print(finalTime,  finalLineOfSight, finalBlastRange, finalAverageChange, avgDistFromCenter, avgChangeInAngle_adv)
-		# print(fitnessVal)
+		fitnessVal = 20*finalTimeFactor + 20*finalLineOfSight + 20*finalBlastRange + 20*avgDistFromCenter + 10*finalAverageChange + 10*avgChangeInAngle_adv
 		return fitnessVal

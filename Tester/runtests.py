@@ -2,7 +2,7 @@ import RobotTester as rt
 import matplotlib.pyplot as plt
 
 robots = 3
-adv = 1
+adv = 4
 los = 0
 br = 0
 angle = 0

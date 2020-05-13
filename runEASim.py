@@ -2,12 +2,12 @@ from EAsim import EAsim
 from random import randint
 import matplotlib.pyplot as plt
 
-minIterations=100
-maxIterations=1000
-minSpeed=1
-MaxSpeed=100
-minDecreasing=1
-MaxDecreasing=100
+minIterations = 10
+maxIterations = 10000
+minSpeed = 1
+MaxSpeed = 30
+minDecreasing = 1
+MaxDecreasing = 1000
 
 initialPop = 100
 population = []
@@ -82,7 +82,7 @@ while fitnessVal < 100 and len(population) > 1:
         #     fitnessVal += 1
         # else:
         #     fitnessVal += 3
-        fitnessVal += ((len(newPopulation) * 1.00) / len(population))
+        fitnessVal += ((len(newPopulation) - len(population)) * 5.00) / len(population)
 
     oldPopulation = population
     population = newPopulation
