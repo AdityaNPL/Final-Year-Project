@@ -1,15 +1,17 @@
 from random import randint
 from Robots import Ally, Adversary
 import math
+import numpy as np
 
 class EmptyWorld:
     def __init__(self, realWorld):
         self.n_agents = 3
-        self.obs = []
+        self.trueObs = []
         self.allies = []
         self.adv = Adversary.Adversary(4, realWorld)
         self.stepNum = 0
         self.maxIterations = 1000
+        self.boundary = 1500
         for i in range(3):
             self.allies.append(Ally.Ally(i+1, realWorld))
 
@@ -24,15 +26,29 @@ class EmptyWorld:
     def reset(self):
         return self.getObservations()
 
+    def getErroredPostion(self, ally, adv):
+        distanceToOject = self.calcDistanceBetweenPoints(ally, adv)
+        errorValue = (np.random.normal(distanceToOject, distanceToOject/10, 1)[0]) - distanceToOject
+        return [adv[0] + errorValue, adv[1] + errorValue, adv[2] + errorValue]
+
     def getObservations(self):
+        observations = []
+        self.adv.calcStatus()
+        for ally in self.allies:
+            ally.calcStatus()
+            advPos = self.getErroredPostion(ally.pos, self.adv.pos)
+            observations.append((ally.pos[0],ally.pos[1],ally.pos[2],advPos[0],advPos[1],advPos[2]))
+        self.getTrueObservations()
+        return observations
+
+    def getTrueObservations(self):
         observations = []
         self.adv.calcStatus()
         advPos = self.adv.pos
         for ally in self.allies:
             ally.calcStatus()
             observations.append((ally.pos[0],ally.pos[1],ally.pos[2],advPos[0],advPos[1],advPos[2]))
-        self.obs = observations
-        return observations
+        self.trueObs = observations
 
     def getRewards(self, oldObs, newObs, actions):
         rewards = []
@@ -44,13 +60,20 @@ class EmptyWorld:
             newDist = self.calcDistanceBetweenPoints([newObs[i][0], newObs[i][1], newObs[i][2]],[newObs[i][3], newObs[i][4], newObs[i][5]])
             reward = oldDist - newDist
             totalReward = reward + globalReward
-            if advCenterNewDist >= 1000:
+            if advCenterNewDist >= self.boundary:
                 totalReward += 5
             elif advCenterNewDist <= 100:
                 totalReward -= 5 
             rewards.append(totalReward)
 
         return rewards
+
+    def isOutOfBounds(self, pos):
+        refPoint = [0,0,50]
+        dist = self.calcDistanceBetweenPoints(pos, refPoint)
+        if dist > self.boundary:
+            return True
+        return False
 
     def calcDistanceBetweenPoints(self, selfPoint, refPoint):
         ans = 0
@@ -66,8 +89,8 @@ class EmptyWorld:
         for ally in self.allies:
             ally.calcStatus()
             if self.isEqual(ally.pos,advPos):
-                return True
-        return False
+                return True 
+        return self.isOutOfBounds(advPos)
 
     def isEqual(self, a, b):
         if a[0] == b[0] and a[1] == b[1] and a[2] == b[2]:
@@ -79,8 +102,9 @@ class EmptyWorld:
         self.runAllies(actions)
         self.runAdv()
         self.stepNum +=1
-        oldObs = self.obs
-        newObs = self.getObservations()
+        oldObs = self.trueObs
+        _ = self.getObservations()
+        newObs = self.trueObs
         return (newObs, self.getRewards(oldObs, newObs, actions), self.getIsDone())
 
     def runAllies(self, actions):

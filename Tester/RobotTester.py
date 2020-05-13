@@ -17,7 +17,7 @@ class RobotTester:
             self.oppSpeed = oppFile[1]
 
         self.lineOfSight = 15 # in degrees
-        self.blastRange = 50
+        self.blastRange = 100
 
     def getDetailsFromFile(self):
         self.selfPos = []
@@ -47,7 +47,6 @@ class RobotTester:
 
     def countLineOfSight(self):
         count = 0
-        print(len(self.selfPos))
         for time in range(len(self.selfPos)):
             thetaX = self.calcAngleX(self.selfPos[time], self.oppPos[time])
             phiX = self.calcAngleX(self.selfSpeed[time], (0,0,0)) # angle to horizontal based on speed vectors for direction
@@ -95,77 +94,49 @@ class RobotTester:
                 count += 1
         return (count, len(self.selfPos))
 
-    def rateOfChangeOfAngleOfSelf(self):
-        valuesOverTime = self.timeViewChangeOfAngleOfSelf()
-        sumofValues = 0
-        avgOverTime = []
-        counter = 0
-        for val in valuesOverTime:
-            sumofValues += val[1]
-            counter += 1
-            avgOverTime.append((counter,sumofValues/counter))
-        return avgOverTime
+    def changeOfAngleOfSelf(self):
+        valuesOverTime = self.anglesWithTime()
+        angleChangeOverTime = []
+        for time in range(len(valuesOverTime)):
+            if time == 1:
+                angleChangeOverTime.append(0)
+            else:
+                angleChange = math.radians(abs(valuesOverTime[time][1] - valuesOverTime[time-1][1]))
+                angleChangeOverTime.append(angleChange)
+        return angleChangeOverTime
 
-    def avgAngularAcleration(self):
-        valuesOverTime = self.timeViewAngularAcleration()
-        valuesOverTime.append((0,0,0))
-        accForEachTurn = []
-        startPos = 0
-        for pos in range(len(valuesOverTime)-1):
-            if valuesOverTime[pos][0] + 1 != valuesOverTime[pos+1][0]:
-                time = valuesOverTime[pos][0] - valuesOverTime[startPos][0]
-                if time == 0:
-                    continue
-                changeInAngle = math.radians(abs(valuesOverTime[pos][1] - valuesOverTime[startPos][1]))
-                angularVel = changeInAngle/time
-                distanceBetweenPoints = self.calcDistanceBetweenPoints(self.selfPos[valuesOverTime[pos][0]],self.selfPos[valuesOverTime[startPos][0]])
-                if changeInAngle != 0:
-                    radiusOfTurn = (distanceBetweenPoints/2)/(math.sin(changeInAngle/2))
-                    angularAcc = 0
-                    if radiusOfTurn != 0:
-                        angularAcc = angularVel / radiusOfTurn
-                          
-                    accForEachTurn.append(angularAcc)
+    def angularAcceleration(self):
+        valuesOverTime = self.anglesWithTime()
+        accOverTime = []
+        for time in range(len(valuesOverTime)):
+            if time == 1:
+                accOverTime.append(0)
+            else:
+                angularVel = math.radians(abs(valuesOverTime[time][1] - valuesOverTime[time-1][1]))
+                if (angularVel == 0):
+                    accOverTime.append(0)
                 else:
-                    accForEachTurn.append(0)
-                startPos = pos+1
-
-        sumofValues = 0
-        avgOverTime = []
-        counter = 0
-        for val in accForEachTurn:
-            sumofValues += val
-            counter += 1
-            avgOverTime.append((counter,sumofValues/counter))
-        return avgOverTime
+                    distanceBetweenPoints = self.calcDistanceBetweenPoints(self.selfPos[time],self.selfPos[time-1])
+                    radiusOfTurn = (distanceBetweenPoints/2)/(math.sin(angularVel/2))
+                    if (radiusOfTurn == 0):
+                        accOverTime.append(0)
+                        continue
+                    angularAcc = angularVel / radiusOfTurn
+                    accOverTime.append(angularAcc)
+        return accOverTime
 
     def timeTakenToCapture(self):
         return len(self.oppPos)
 
-    def timeViewChangeOfAngleOfSelf(self):
-        listOfTimes = []
-        for time in range(len(self.selfPos)-1):
-            currentAngleX = self.calcAngleX(self.selfSpeed[time], (0,0,0))
-            currentAngleY = self.calcAngleY(self.selfSpeed[time], (0,0,0))
-            currentAngleZ = self.calcAngleZ(self.selfSpeed[time], (0,0,0))
-            nextAngleX = self.calcAngleX(self.selfSpeed[time+1],(0,0,0))
-            nextAngleY = self.calcAngleY(self.selfSpeed[time+1],(0,0,0))
-            nextAngleZ = self.calcAngleZ(self.selfSpeed[time+1],(0,0,0))
-            currentAngle = (currentAngleX + currentAngleY + currentAngleZ) / 3
-            nextAngle = (nextAngleX + nextAngleY + nextAngleZ) / 3
-            listOfTimes.append((time,abs(currentAngle - nextAngle)))
-        return listOfTimes
-
-    def timeViewAngularAcleration(self):
-        listOfTimes = []
-        for time in range(len(self.selfPos)):
+    def anglesWithTime(self):
+        listOfAngles = []
+        for time in range(len(self.selfSpeed)):
             currentAngleX = self.calcAngleX(self.selfSpeed[time], (0,0,0))
             currentAngleY = self.calcAngleY(self.selfSpeed[time], (0,0,0))
             currentAngleZ = self.calcAngleZ(self.selfSpeed[time], (0,0,0))
             currentAngle = (currentAngleX + currentAngleY + currentAngleZ) / 3
-            if len(listOfTimes) == 0 or currentAngle != listOfTimes[len(listOfTimes)-1][1]:
-                listOfTimes.append((time,currentAngle))
-        return listOfTimes
+            listOfAngles.append((time,currentAngle))
+        return listOfAngles
 
     def avgDistFromCenter(self):
         dist = 0
