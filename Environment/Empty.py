@@ -44,7 +44,7 @@ class EmptyWorld:
     def getTrueObservations(self):
         observations = []
         self.adv.calcStatus()
-        advPos = self.adv.pos
+        advPos = self.adv.poscd
         for ally in self.allies:
             ally.calcStatus()
             observations.append((ally.pos[0],ally.pos[1],ally.pos[2],advPos[0],advPos[1],advPos[2]))

@@ -14,7 +14,7 @@ from Environment import Empty
 
 
 def simulate(sess, actor):
-    env = Empty.EmptyWorld(False)
+    env = Empty.EmptyWorld(True)
     sess.run(tf.compat.v1.global_variables_initializer())
 
     state = env.reset()
