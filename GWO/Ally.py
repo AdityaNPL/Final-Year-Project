@@ -1,6 +1,11 @@
 """
 This file contains the class for the Ally.
 This class is responsible for moving the allies during the simulation using the GWO waypoint algorithm approach.
+This is based on and adapted from the implementation in the paper by Mirjalili et al.
+[S. Mirjalili, S.M. Mirjalili, and A. Lewis. “Grey Wolf Optimizer”.
+In: Advances in Engineering Software. Vol. 69. 2014, pp. 46–61.
+doi: https://doi.org/10.1016/j.advengsoft.2013.12.007.
+url: http://www.sciencedirect.com/science/article/pii/S0965997813001853.]
 """
 
 import sys
@@ -76,7 +81,6 @@ class Ally:
         x,y,z = (random.uniform(-50,50),random.uniform(-50,50),0)
         if self.realSim:
             subprocess.check_output(["rosrun","rotors_gazebo", "waypoint_publisher", str(x), str(y), str(z), str(0), "__ns:=firefly"+str(self.id)])
-        # print(x,y,z)
 
     def randRs(self):
         self.r1 = [random.uniform(0,1),random.uniform(0,1),random.uniform(0,1)]
