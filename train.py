@@ -1,3 +1,9 @@
+"""
+This file contains the training functions for CommNet.
+This is based on and adapted from the implementation on Coac's GitHub repo
+[Victor Le (Coac). Coac/CommNet-BiCnet. url: https://github.com/Coac/CommNetBiCnet.]
+"""
+
 import math
 import time
 import sys
@@ -11,7 +17,6 @@ import tensorflow as tf
 from Model import CommNet
 from Robots import Adversary, Ally
 from Environment import Empty
-from Tester import runtests
 
 def simulate(sess, actor):
     env = Empty.EmptyWorld(False)
@@ -19,7 +24,7 @@ def simulate(sess, actor):
 
     state = env.reset()
     done = False
-    counter = 0 
+    counter = 0
     while not done:
         counter += 1
         print(counter)
@@ -40,10 +45,10 @@ def train(sess, env, actor, critic):
     labelsCommNet = []
 
     for i in range(episodes):
-        percentage = (i*100.00)/episodes 
-        if percentage % 10 == 0: 
+        percentage = (i*100.00)/episodes
+        if percentage % 10 == 0:
             print(str(percentage) + "%")
-        
+
         state = env.reset()
 
         ep_reward = 0
@@ -132,7 +137,4 @@ with tf.compat.v1.Session(config=config) as sess:
 
     printTrainingCurve(labels, episodeRewards)
 
-    for i in range(10):
-        simulate(sess, actor)
-        runtests.runTest()
-
+    simulate(sess, actor)

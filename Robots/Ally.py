@@ -1,3 +1,7 @@
+"""
+This file contains the class for the Ally.
+This class is resposible for the movement of the alies during the simulation by using the outputs from the CommNet model
+"""
 import sys
 import subprocess
 import getStatus as gs

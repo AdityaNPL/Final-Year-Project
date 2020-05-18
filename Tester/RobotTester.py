@@ -1,3 +1,8 @@
+"""
+This file contains the class for the RobotTester.
+This class is responsible for testing the results of the simulation by calculating the perfromance metrics.
+"""
+
 import os
 import csv
 import math
@@ -142,5 +147,4 @@ class RobotTester:
         dist = 0
         for pos in self.oppPos:
             dist += self.calcDistanceBetweenPoints(pos,(0,0,50))
-            # print(self.calcDistanceBetweenPoints(pos,(650,350)))
         return (dist * 1.0)/len(self.oppPos)

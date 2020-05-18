@@ -1,3 +1,9 @@
+"""
+This file contains the imlementation of the CommNet Model, the Actor network and the Critic Network.
+This is based on and adapted from the implementation on Coac's GitHub repo
+[Victor Le (Coac). Coac/CommNet-BiCnet. url: https://github.com/Coac/CommNetBiCnet.]
+"""
+
 import tensorflow as tf
 
 hiddenValueLengths = 3

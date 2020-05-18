@@ -1,3 +1,9 @@
+"""
+This file contains the environment class called EmptyWorld.
+This class is responsible for simulating the environment for the agents during training
+"""
+
+
 from random import randint
 from Robots import Ally, Adversary
 import math
@@ -63,7 +69,7 @@ class EmptyWorld:
             if advCenterNewDist >= self.boundary:
                 totalReward += 5
             elif advCenterNewDist <= 100:
-                totalReward -= 5 
+                totalReward -= 5
             rewards.append(totalReward)
 
         return rewards
@@ -89,7 +95,7 @@ class EmptyWorld:
         for ally in self.allies:
             ally.calcStatus()
             if self.isEqual(ally.pos,advPos):
-                return True 
+                return True
         return self.isOutOfBounds(advPos)
 
     def isEqual(self, a, b):
