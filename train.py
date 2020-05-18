@@ -11,10 +11,10 @@ import tensorflow as tf
 from Model import CommNet
 from Robots import Adversary, Ally
 from Environment import Empty
-
+from Tester import runtests
 
 def simulate(sess, actor):
-    env = Empty.EmptyWorld(True)
+    env = Empty.EmptyWorld(False)
     sess.run(tf.compat.v1.global_variables_initializer())
 
     state = env.reset()
@@ -132,4 +132,7 @@ with tf.compat.v1.Session(config=config) as sess:
 
     printTrainingCurve(labels, episodeRewards)
 
-    simulate(sess, actor)
+    for i in range(10):
+        simulate(sess, actor)
+        runtests.runTest()
+
