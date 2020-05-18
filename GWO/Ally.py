@@ -1,3 +1,8 @@
+"""
+This file contains the class for the Ally.
+This class is responsible for moving the allies during the simulation using the GWO waypoint algorithm approach.
+"""
+
 import sys
 import subprocess
 import getStatus as gs
@@ -41,8 +46,6 @@ class Ally:
 
     def printHistory(self, write):
         self.calcStatus()
-        # print("########################################")
-        # print("Robo:" + str(self.id))
 
         posList = []
         for key in self.history.keys():

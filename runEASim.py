@@ -1,3 +1,7 @@
+"""
+This file contains the implementation of an EA optimiser.
+"""
+
 from EAsim import EAsim
 from random import randint
 import matplotlib.pyplot as plt
@@ -76,12 +80,6 @@ while fitnessVal < 100 and len(population) > 1:
         newPopulation.append(EAsim.EAsim(child2))
 
     if len(newPopulation) >= len(population):
-        # if fitnessVal >= 60:
-        #     fitnessVal += 0.5
-        # elif fitnessVal >= 55 :
-        #     fitnessVal += 1
-        # else:
-        #     fitnessVal += 3
         fitnessVal += ((len(newPopulation) - len(population)) * 5.00) / len(population)
 
     oldPopulation = population

@@ -1,3 +1,8 @@
+"""
+This file contains the class for the RobotTester.
+This class is responsible for testing the results of the simulation by calculating the perfromance metrics.
+"""
+
 import os
 import csv
 import math
@@ -49,11 +54,11 @@ class RobotTester:
         count = 0
         for time in range(len(self.selfPos)):
             thetaX = self.calcAngleX(self.selfPos[time], self.oppPos[time])
-            phiX = self.calcAngleX(self.selfSpeed[time], (0,0,0)) # angle to horizontal based on speed vectors for direction
+            phiX = self.calcAngleX(self.selfSpeed[time], (0,0,0)) # angle to X based on speed vectors for direction
             thetaY = self.calcAngleY(self.selfPos[time], self.oppPos[time])
-            phiY = self.calcAngleY(self.selfSpeed[time], (0,0,0)) # angle to horizontal based on speed vectors for direction
+            phiY = self.calcAngleY(self.selfSpeed[time], (0,0,0)) # angle to Y based on speed vectors for direction
             thetaZ = self.calcAngleZ(self.selfPos[time], self.oppPos[time])
-            phiZ = self.calcAngleZ(self.selfSpeed[time], (0,0,0)) # angle to horizontal based on speed vectors for direction
+            phiZ = self.calcAngleZ(self.selfSpeed[time], (0,0,0)) # angle to Z based on speed vectors for direction
 
             if abs(thetaX - phiX) < self.lineOfSight and abs(thetaY - phiY) < self.lineOfSight and abs(thetaZ - phiZ) < self.lineOfSight:
                 count += 1
@@ -127,19 +132,16 @@ class RobotTester:
 
     def anglesWithTime(self):
         listOfAngles = []
-        # print(self.selfSpeed)
         for time in range(len(self.selfSpeed)):
             currentAngleX = self.calcAngleX(self.selfSpeed[time], (0,0,0))
             currentAngleY = self.calcAngleY(self.selfSpeed[time], (0,0,0))
             currentAngleZ = self.calcAngleZ(self.selfSpeed[time], (0,0,0))
             currentAngle = (currentAngleX + currentAngleY + currentAngleZ) / 3
             listOfAngles.append((time,currentAngle))
-        # print(listOfAngles)
         return listOfAngles
 
     def avgDistFromCenter(self):
         dist = 0
         for pos in self.oppPos:
             dist += self.calcDistanceBetweenPoints(pos,(0,0,50))
-            # print(self.calcDistanceBetweenPoints(pos,(650,350)))
         return (dist * 1.0)/len(self.oppPos)

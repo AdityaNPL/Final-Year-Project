@@ -1,3 +1,8 @@
+"""
+This file contains the class for the Adversary.
+This class is responsible for moving the adversary during the simulation using the VA approach.
+"""
+
 import math
 import time
 import sys
@@ -20,7 +25,6 @@ class Adversary():
         self.timer_start = time.time()
         self.timer_end = time.time()
         self.no_of_move_calls = 0
-        # self.grid_distribution = [[0 for i in range(self.grid_ui_obj.grid_width/100+1)] for j in range(self.grid_ui_obj.grid_height/100+1)]
         self.avgDistFromCenter = 0
         self.dataToAnalyse = []
 
@@ -35,8 +39,6 @@ class Adversary():
 
     def printHistory(self, write):
         self.calcStatus()
-        # print("########################################")
-        # print("Robo:" + str(self.id))
 
         posList = []
         for key in self.history.keys():

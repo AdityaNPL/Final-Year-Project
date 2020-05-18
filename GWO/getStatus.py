@@ -1,3 +1,7 @@
+"""
+This file contains the code to retrive live data from the simulator during a simulation
+"""
+
 import sys
 import subprocess
 

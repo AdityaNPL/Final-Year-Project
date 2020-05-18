@@ -1,17 +1,26 @@
+"""
+This file contains the class for EAsim.
+This class is responsible for running and calculating the fitness value for a certain instance of the GWO waypoint algorithm.
+"""
+
 from GWO import Ally
 from GWO import Adversary
 from Tester import RobotTester as rt
 import math
 class EAsim:
 	def __init__(self, genes):
+
 		self.robotNum = 4
 		self.robots = []
 		self.allies = []
 		self.boundary = 1500
+
 		self.genes = genes # iterations, maxSpeed, decreasingVal
 		self.maxIterations = self.genes["iterations"]
 		self.maxSpeed = self.genes["maxSpeed"]
 		self.decreasingVal = self.genes["decreasingVal"]
+
+		# Change this to True to run on simulator
 		self.realSim = False
 
 		for i in range(self.robotNum-1):
@@ -31,7 +40,6 @@ class EAsim:
 		done = False
 		for i in range(self.maxIterations):
 			positions = []
-			# print(str(i+1) + " / " + str(self.maxIterations))
 			for i in range(self.robotNum):
 				self.robots[i].calcWaypoints()
 
@@ -77,14 +85,17 @@ class EAsim:
 		avgDistFromCenter = (robot.avgDistFromCenter / len(data)) / self.boundary
 		oppPos = []
 		oppSpeed = []
+
 		for row in data:
 			oppPos.append((float(row[1]), float(row[2]), float(row[3])))
 			oppSpeed.append((float(row[4]), float(row[5]), float(row[6])))
+
 		test = rt.RobotTester([oppPos,oppSpeed], [oppPos,oppSpeed])
 		changesInAngles = test.changeOfAngleOfSelf()
 		avgChangeInAngle_adv = abs(math.degrees(sum(changesInAngles)/len(changesInAngles)))/360.0
 		finalTime = test.timeTakenToCapture()
 		finalTimeFactor = 1.00 - (finalTime*1.00 /self.maxIterations)
+
 		for i in range(self.robotNum - 1):
 			robot = self.robots[i]
 			data = robot.dataToAnalyse
@@ -106,10 +117,6 @@ class EAsim:
 		finalLineOfSight = finalLineOfSight / (self.robotNum - 1)
 		finalBlastRange = finalBlastRange / (self.robotNum - 1)
 		finalAverageChange = 1 - (finalAverageChange / (self.robotNum - 1))
-
-		# if finalTimeFactor > 0:
-		# 	print("Finished Early")
-		# 	print(finalTime, finalTimeFactor)
 
 		fitnessVal = 20*finalTimeFactor + 20*finalLineOfSight + 20*finalBlastRange + 20*avgDistFromCenter + 10*finalAverageChange + 10*avgChangeInAngle_adv
 		return fitnessVal
