@@ -10,5 +10,5 @@ discussions.
 The Github repo is organised as follows:
 - Branch "Master": README
 - Branch "VA": code implementation for the Vector Arithemtic approach
-- Branch "GWO-EA": code implementation for the Grey Wolf Optimisation - Evolutionary Algorithm approach
+- Branch "EA-GWO": code implementation for the Grey Wolf Optimisation - Evolutionary Algorithm approach
 - Branch "CommNet": code implementation for the Multi-Agent Reinforcement Learning Communication Network model approach
