@@ -1,5 +1,7 @@
 ### CommNet Runing Instructions
 
+Make sure you have downloaded Gazebo version 7 and ROS Kinetic from here: http://wiki.ros.org/kinetic/Installation 
+
 ```bash
 python ./train.py
 ```
