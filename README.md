@@ -1,5 +1,7 @@
 ### GWO-EA Runing Instructions
 
+Make sure you have downloaded Gazebo version 7 and ROS Kinetic from here: http://wiki.ros.org/kinetic/Installation 
+
 #### Run EA optimiser
 
 ```bash
@@ -13,7 +15,7 @@ python ./runOneSim.py
 ```
 
 
-### VA Testing Instructions
+### GWO-EA Testing Instructions
 
 ```bash
 python ./Tester/runtests.py
