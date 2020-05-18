@@ -1,3 +1,8 @@
+"""
+This file contains the class for AllyRobot.
+This class is responsible for the movements of the allies in the simulation using the VA approach.
+"""
+
 import math
 import Robot
 import numpy as np

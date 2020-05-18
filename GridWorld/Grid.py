@@ -1,3 +1,8 @@
+"""
+This file contains the class for Grid.
+This class is responsible for the grid world attribute of the simulation.
+"""
+
 from UI import GridUI
 import Adversary, Ally
 

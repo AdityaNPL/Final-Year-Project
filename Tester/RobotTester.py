@@ -1,4 +1,8 @@
-import os
+"""
+This file contains the class for the RobotTester.
+This class is responsible for testing the results of the simulation by calculating the perfromance metrics.
+"""
+
 import csv
 import math
 class RobotTester:

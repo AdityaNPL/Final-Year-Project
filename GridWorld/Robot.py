@@ -1,3 +1,8 @@
+"""
+This file contains the class for Robot.
+This class is an abstract class responsible for movements of the robot agents in the simulation.
+"""
+
 import math
 import abc
 import csv

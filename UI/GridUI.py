@@ -1,6 +1,10 @@
+"""
+This file contains the class for GridUI.
+This class is responsible for the UI visualisation and rendering of the simulation.
+"""
+
 from Tkinter import *
 import math
-
 
 class GridUIClass:
 

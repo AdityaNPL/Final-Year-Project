@@ -1,3 +1,8 @@
+"""
+This file contains the class for AdversaryRobot.
+This class is responsible for the movements of the adversary in the simulation using the VA approach.
+"""
+
 import math
 import Robot
 import time

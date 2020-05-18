@@ -1,3 +1,7 @@
+"""
+This file contains the code to run and output the test results for any simulation.
+"""
+
 import RobotTester as rt
 import matplotlib.pyplot as plt
 
@@ -17,30 +21,17 @@ for i in range(1,robots+1):
     globalDist = roboTest.avgDistFromCenter()
 
     res1 = roboTest.countLineOfSight()
-    print("Line of Sight")
-    print(res1)
-    print((res1[0] * 1.00)/res1[1])
     los += (res1[0] * 1.00)/res1[1]
 
     res2 = roboTest.countBlastRange()
-    print("Blast Range")
-    print(res2)
-    print((res2[0] * 1.00)/res2[1])
     br +=(res2[0] * 1.00)/res2[1]
 
     res3 = roboTest.changeOfAngleOfSelf()
-    print("Change in Angle -- see graph")
-    print("Avg Change in Angle")
     avgChangeInAngle = sum(res3)/len(res3)
-    print(avgChangeInAngle)
     angle += avgChangeInAngle
 
     res5 = roboTest.angularAcceleration()
-    print("Angular Acceleration -- see graph")
-    print(res5[len(res5)-1])
-    print("Avg Angular Acceleration")
     avgAngularAcc = sum(res5)/len(res5)
-    print(avgAngularAcc)
     acc += avgAngularAcc
 
     if i == 1:
